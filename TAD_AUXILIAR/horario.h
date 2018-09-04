@@ -4,13 +4,26 @@
 #include <stdlib.h>
 
 typedef struct {
-  unsigned int hora;
-  unsigned int minutos;
-  unsigned int dia;
-  unsigned int mes;
-  unsigned int ano;
+  unsigned short hora;
+  unsigned short minuto;
+  unsigned short dia;
+  unsigned short mes;
+  unsigned short ano;
+
 } horario;
 
-int inicializa(horario *ponteiro);
+
+int horario_inicializa(horario *ponteiro);
+int horario_setHora(horario *ponteiro, unsigned short hora);
+int horario_setMinuto(horario *ponteiro, unsigned short minuto);
+int horario_setDia(horario *ponteiro, unsigned short dia);
+int horario_setHora(horario *ponteiro, unsigned short hora);
+int horario_setHora(horario *ponteiro, unsigned short hora);
+
+int horario_setHora(horario *ponteiro, int hora);
+int horario_setHora(horario *ponteiro, int hora);
+int horario_setHora(horario *ponteiro, int hora);
+int horario_setHora(horario *ponteiro, int hora);
+int horario_setHora(horario *ponteiro, int hora);
 
 #endif // HOARIO_H_INCLUDED
