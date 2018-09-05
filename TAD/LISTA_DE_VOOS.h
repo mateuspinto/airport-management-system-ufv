@@ -7,9 +7,9 @@
 
 #include "VOO.h"
 
-typedef struct {
+typedef struct ITEM_LISTAS_DE_VOOS {
     VOO item;
-    ITEM_LISTAS_DE_VOOS *lista;
+    struct ITEM_LISTAS_DE_VOOS *proximoPtr;
 } ITEM_LISTAS_DE_VOOS;
 
 typedef struct {
@@ -19,9 +19,6 @@ typedef struct {
 } LISTA_DE_VOOS;
 
 int LISTA_DE_VOOS_criaLista(LISTA_DE_VOOS *ponteiro);
-int LISTA_DE_VOOS_insereVoo(LISTA_DE_VOOS *lista, VOO *item);
-int LISTA_DE_VOOS_removeVoo(LISTA_DE_VOO *lista, unsigned int VID);
-int LISTA_DE_VOOS_procuraVooVID(LISTA_DE_VOO *lista, unsigned int VID);
 
 
 #endif //XAERO_TP1AEDS_LISTA_VOO_H

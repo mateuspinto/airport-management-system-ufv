@@ -27,46 +27,37 @@ int VOO_setVID(VOO *ponteiro, unsigned int VID){
 /* Define o dado Horario de Decolagem do TAD VOO. Tem como entrada um ponteiro para o TAD e
    um int para o horario. Retorna 0 se for bem sucedido. */
 int VOO_setHorarioDecolagem(VOO *ponteiro, horario *horario){
-
-
     return 0;
 }
 
 /* Define o dado Horario de Pouso do TAD VOO. Tem como entrada um ponteiro para o TAD e
    um int para o horario. Retorna 0 se for bem sucedido. */
 int VOO_setHorarioPouso(VOO *ponteiro, horario *horario){
-
     return 0;
 }
 
 /* Define o dado Aeroporto de Decolagem do TAD VOO. Tem como entrada um ponteiro para o TAD e
    um char para o aeroporto. Retorna 0 se for bem sucedido. */
 int VOO_setAeroportoDecolagem(VOO *ponteiro, char *aeroporto){
-
     for(int i = 0; i < 30; i++) {
         ponteiro -> aeroportoDecolagem[i] = aeroporto[i];
     }
-
     return 0;
 }
 
 /* Define o dado Aeroporto de Pouso do TAD VOO. Tem como entrada um ponteiro para o TAD e
    um char para o aeroporto. Retorna 0 se for bem sucedido. */
 int VOO_setAeroportoPouso(VOO *ponteiro, char *aeroporto){
-
     for(int i = 0; i < 30; i++) {
         ponteiro -> aeroportoPouso[i] = aeroporto[i];
     }
-
     return 0;
 }
 
 /* Define o dado Pista de Decolagem do TAD VOO. Tem como entrada um ponteiro para o TAD e
    um unsigned int para a pista. Retorna 0 se for bem sucedido. */
 int VOO_setIdentificadorPistaDecolagem(VOO *ponteiro, unsigned int identificador){
-
     ponteiro -> identificadorPistaDecolagem = identificador;
-
     return 0;
 }
 
@@ -79,13 +70,13 @@ int VOO_getVID(VOO *ponteiro){
 /* Retorna o dado Horario de Decolagem do TAD VOO. Tem como entrada um ponteiro para o TAD
    VOO. */
 void VOO_getHorarioDecolagem(VOO *ponteiro, horario *horario){
-
+    ponteiro -> horarioDecolagem = *horario;
 }
 
 /* Retorna o dado Horario de Pouso do TAD VOO. Tem como entrada um ponteiro para o TAD
    VOO. */
 void VOO_getHorarioPouso(VOO *ponteiro, horario *horario){
-
+    ponteiro -> horarioDecolagem = *horario;
 }
 
 /* Retorna o dado Aeroporto de Decolagem do TAD VOO. Tem como entrada um ponteiro para o TAD
