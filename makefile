@@ -1,5 +1,5 @@
 # change application name here (executable output name)
-TARGET=xaero.o
+TARGET=xaero.exe
  
 # compiler
 CC=clang
@@ -15,7 +15,7 @@ all:
 	$(CC) -o $(TARGET) $(SRC) $(CCFLAGS)
 
 run:
-	./$(TARGET)
+	$(TARGET)
 
 clean:
-	rm $(TARGET)
+	del $(TARGET)
