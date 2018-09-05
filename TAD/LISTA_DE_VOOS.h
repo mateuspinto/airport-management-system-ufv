@@ -18,6 +18,7 @@ typedef struct {
     unsigned int numItens;
 } LISTA_DE_VOOS;
 
+int LISTA_DE_VOOS_criaLista(LISTA_DE_VOOS *ponteiro);
 
 
 #endif //XAERO_TP1AEDS_LISTA_VOO_H
