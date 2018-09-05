@@ -9,7 +9,7 @@
 
 typedef struct {
     VOO item;
-    ITEM_LISTAS_DE_VOOS *lista;
+    ITEM_LISTAS_DE_VOOS *proximo;
 } ITEM_LISTAS_DE_VOOS;
 
 typedef struct {
