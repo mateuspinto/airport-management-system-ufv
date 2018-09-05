@@ -12,7 +12,7 @@ CCFLAGS=$(WARN)
 SRC= main.c
 
 all:
-	$(CC) -o $(TARGET) $(SRC) $(CCFLAGS)
+	$(CC) -o $(TARGET) $(SRC) $(CCFLAGS) -lm
 
 run:
 	./$(TARGET)
