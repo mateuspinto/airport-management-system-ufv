@@ -2,20 +2,20 @@
 TARGET=xaero.exe
  
 # compiler
-CC=gcc
+CC=clang
 # warnings
 WARN=-Wall
 
  
 CCFLAGS=$(WARN)
 
-SRC= main.c
+SRC= main.c TAD_AUXILIAR/horario.c TAD/VOO.c
 
 all:
 	$(CC) -o $(TARGET) $(SRC) $(CCFLAGS)
 
 run:
-	./$(TARGET)
+	$(TARGET)
 
 clean:
-	rm $(TARGET)
+	del $(TARGET)
