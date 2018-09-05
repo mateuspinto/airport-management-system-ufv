@@ -27,7 +27,7 @@ int VOO_setVID(VOO *ponteiro, unsigned int VID){
 /* Define o dado Horario de Decolagem do TAD VOO. Tem como entrada um ponteiro para o TAD e
    um int para o horario. Retorna 0 se for bem sucedido. */
 int VOO_setHorarioDecolagem(VOO *ponteiro, horario *horario){
-    
+
 
     return 0;
 }
