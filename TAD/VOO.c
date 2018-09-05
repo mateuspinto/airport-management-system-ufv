@@ -1,7 +1,9 @@
 // Incluindo header do TAD e/ou bibliotecas necessárias
 #include "VOO.h"
 
-int VOO_inicializa(VOO *ponteiro);
+int VOO_inicializa(VOO *ponteiro){
+    return 0;
+}
 int VOO_setVID(VOO *ponteiro, unsigned int VID);
 int VOO_setHorarioDecolagem(VOO *ponteiro, horario *horario);
 int VOO_setHorarioPouso(VOO *ponteiro, horario *horario);
