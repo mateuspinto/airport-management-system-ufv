@@ -20,7 +20,7 @@ typedef struct {
 // Definindo protótipo da função inicializa que elimina lixo de memória.
 int VOO_inicializa(VOO *ponteiro);
 
-// Definindo o protótipo das funções set. Retornam 1 se der certo.
+// Definindo o protótipo das funções set. Retornam 0 se der certo.
 int VOO_setVID(VOO *ponteiro, unsigned int VID);
 int VOO_setHorarioDecolagem(VOO *ponteiro, horario *horario);
 int VOO_setHorarioPouso(VOO *ponteiro, horario *horario);
