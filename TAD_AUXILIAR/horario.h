@@ -32,5 +32,7 @@ unsigned short int horario_getDia(horario *ponteiro);
 unsigned short int horario_getMes(horario *ponteiro);
 unsigned short int horario_getAno(horario *ponteiro);
 
+int horario_getHorarioAbsoluto(horario *ponteiro);
+
 // Fim do define
 #endif // HOARIO_H_INCLUDED

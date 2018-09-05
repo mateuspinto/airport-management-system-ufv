@@ -76,3 +76,9 @@ unsigned short int horario_getMes(horario *ponteiro){
 unsigned short int horario_getAno(horario *ponteiro){
     return ponteiro -> ano;
 }
+
+int horario_getHorarioAbsoluto(horario *ponteiro){
+    int horarioAbsoluto = ponteiro -> minuto + (ponteiro -> hora +
+    24 *(ponteiro -> dia + 30 *(ponteiro -> mes + 12 *(ponteiro -> ano))));
+    return horarioAbsoluto;
+}
