@@ -9,17 +9,20 @@ int LISTA_DE_VOOS_criaLista(LISTA_DE_VOOS *ponteiro){
 }
 
 int LISTA_DE_VOOS_insereVoo(LISTA_DE_VOOS *lista, VOO *item){
-    int horarioComparar = horario_getHorarioAbsoluto(item-> &horarioDecolagem);
+/*
+    horario * horarioComparar = item-> &horarioDecolagem;
     ITEM_LISTAS_DE_VOOS * itemAnalisado = lista -> primeiroPtr ;
-    int horarioItem;
+    horario * horarioItem;
 
     horarioItem = horario_getHorarioAbsoluto(itemAnalisado -> proximo -> &horarioDecolagem);
 
-    while(horarioComparar<horarioItem){
+    while(horario_ehFuturo(horarioComparar,horarioItem)){
       itemAnalisado = itemAnalisado -> proximo;
-      horarioItem = horario_getHorarioAbsoluto(itemAnalisado -> proximo -> &horarioDecolagem);
-    }
+      horarioItem = itemAnalisado -> proximo -> &horarioDecolagem;
+    } */
+    return 0;
 }
 
-int LISTA_DE_VOOS_removeVoo(LISTA_DE_VOO *lista, unsigned int VID);
-VOO * LISTA_DE_VOOS_procuraVooVID(LISTA_DE_VOO *lista, unsigned int VID);
+int LISTA_DE_VOOS_removeVoo(LISTA_DE_VOOS *lista, unsigned int VID){
+    return 0;
+}
