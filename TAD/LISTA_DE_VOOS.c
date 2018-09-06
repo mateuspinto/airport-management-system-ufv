@@ -13,11 +13,11 @@ int LISTA_DE_VOOS_insereVoo(LISTA_DE_VOOS *lista, VOO *item){
     ITEM_LISTAS_DE_VOOS * itemAnalisado = lista -> primeiroPtr ;
     int horarioItem;
 
-    horarioItem = horario_getHorarioAbsoluto(itemAnalisado -> ITEM_LISTAS_DE_VOOS -> &horarioDecolagem);
+    horarioItem = horario_getHorarioAbsoluto(itemAnalisado -> proximo -> &horarioDecolagem);
 
     while(horarioComparar<horarioItem){
       itemAnalisado = itemAnalisado -> proximo;
-      horarioItem = horario_getHorarioAbsoluto(itemAnalisado -> ITEM_LISTAS_DE_VOOS -> &horarioDecolagem);
+      horarioItem = horario_getHorarioAbsoluto(itemAnalisado -> proximo -> &horarioDecolagem);
     }
 }
 
