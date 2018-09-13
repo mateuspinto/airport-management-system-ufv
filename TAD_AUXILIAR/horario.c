@@ -21,7 +21,7 @@ int horario_compararHorarios(horario *ponteiro1, horario *ponteiro2){
 }
 
 int horario_ehFuturo(horario *ponteiro1, horario *ponteiro2){
-  if((ponteiro1 -> horarioAbsoluto) < (ponteiro2 -> horarioAbsoluto)){
+  if((horario_getHorarioAbsoluto(ponteiro1)) < (horario_getHorarioAbsoluto(ponteiro2))){
       return 1;
     } else {
       return 0;
