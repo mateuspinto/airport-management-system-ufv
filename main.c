@@ -1,23 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "TAD_AUXILIAR/horario.h"
+#include "TAD/LISTA_DE_VOOS.h"
 
 int main(){
-    horario irineu, irineu2;
-    long int a;
-    char * string;
+    LISTA_DE_VOOS mateus;
+    VOO joao, joander;
+    ITEM_LISTA_DE_VOOS *ponteiro = NULL;
+    unsigned int vid;
 
-    horario_setHorarioAbosluto(&irineu2, 900);
 
-    horario_setHorario(&irineu, 0, 30, 13, 25, 5, 118);
 
-    a = horario_getHorarioAbsoluto(&irineu);
-    printf("%ld\n", a);
+    LISTA_DE_VOOS_criaLista(&mateus);
 
-    horario_getHorarioString(&irineu, string);
+    ponteiro = mateus.primeiroPtr;
 
-    for(int i=0; i<27; i++){
-      printf("%c", string[i]);
+    VOO_inicializa(&joao);
+    VOO_inicializa(&joander);
+
+    VOO_setVID(&joao, 599);
+    VOO_setVID(&joander, 399);
+
+    LISTA_DE_VOOS_insereVoo(&mateus, &joao);
+    LISTA_DE_VOOS_insereVoo(&mateus, &joander);
+    LISTA_DE_VOOS_insereVoo(&mateus, &joao);
+
+    while((*ponteiro).proximo!=NULL){
+      ponteiro=(*ponteiro).proximo;
+      vid = VOO_getVID(&(ponteiro->item));
+      printf("BOCETA %d\n", vid);
     }
 }

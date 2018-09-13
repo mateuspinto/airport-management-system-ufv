@@ -63,7 +63,7 @@ int VOO_setIdentificadorPistaDecolagem(VOO *ponteiro, unsigned int identificador
 
 /* Retorna o dado VID do TAD VOO. Tem como entrada um ponteiro para o TAD
    VOO. */
-int VOO_getVID(VOO *ponteiro){
+unsigned int VOO_getVID(VOO *ponteiro){
     return ponteiro -> VID;
 }
 

@@ -11,9 +11,24 @@ int LISTA_DE_VOOS_criaLista(LISTA_DE_VOOS *ponteiro){
 }
 
 int LISTA_DE_VOOS_insereVoo(LISTA_DE_VOOS *lista, VOO *itemInserido){
+  ITEM_LISTA_DE_VOOS *itemVoo=malloc(sizeof(ITEM_LISTA_DE_VOOS));
+  (*itemVoo).item=*itemInserido;
+  (*itemVoo).proximo=NULL;
+  ITEM_LISTA_DE_VOOS *itemLista=lista->primeiroPtr;
 
-  
+  printf("primeiro == %p\n", itemLista);
 
+  while((*itemLista).proximo!=NULL){
+    itemLista=(*itemLista).proximo;
+    printf("BOCETA\n");
+  }
+
+  (*itemLista).proximo=itemVoo;
+
+  printf("ponteiro ==%p\n", itemLista);
+  printf("proximo == %p\n", itemLista->proximo);
+
+  return 0;
 }
 
 int LISTA_DE_VOOS_removeVoo(LISTA_DE_VOOS *lista, unsigned int VID){

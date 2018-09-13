@@ -31,7 +31,7 @@ int VOO_setIdentificadorPistaDecolagem(VOO *ponteiro, unsigned int identificador
 /* Definindo o protótipo das funções get. Retornam o dado caso seja de um tipo
    primitivo, retorna void e permite entrar com um ponteiro para armazenar o
    dado, caso não seja de um tipo primitivo */
-int VOO_getVID(VOO *ponteiro);
+unsigned int VOO_getVID(VOO *ponteiro);
 void VOO_getHorarioDecolagem(VOO *ponteiro, horario *horario);
 void VOO_getHorarioPouso(VOO *ponteiro, horario *horario);
 void VOO_getAeroportoDecolagem(VOO *ponteiro, char *aeroporto);
