@@ -23,6 +23,7 @@ int LISTA_DE_VOOS_insereVoo(LISTA_DE_VOOS *lista, VOO *itemInserido){
     printf("BOCETA\n");
   }
 
+  (*itemVoo).proximo=(*itemLista).proximo;
   (*itemLista).proximo=itemVoo;
 
   printf("ponteiro ==%p\n", itemLista);
