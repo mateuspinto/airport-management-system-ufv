@@ -8,4 +8,4 @@ typedef struct{
 } ITEM_MATRIZ;
 
 int ITEM_MATRIZ_inicializa(ITEM_MATRIZ *ponteiro);
-int ITEM_MATRIZ_setItem(ITEM_MATRIZ *ponteiro, LISTA_DE_VOOS *item, horario *ultimaAtualizacao);
+int ITEM_MATRIZ_setItemMatriz(ITEM_MATRIZ *ponteiro, LISTA_DE_VOOS *item, horario *ultimaAtualizacao);
