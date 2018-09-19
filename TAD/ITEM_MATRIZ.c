@@ -28,7 +28,7 @@ int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setHorarioDecolagem(ITEM_MATRIZ *ponteiro, uns
     while(swapItemMatriz->proximo!=NULL && swapItemMatriz->item.VID!=vid){
         swapItemMatriz=swapItemMatriz->proximo;
     }
-    VOO_setHorarioDecolagem(swapItemMatriz->proximo, horario);
+    VOO_setHorarioDecolagem(&(swapItemMatriz->proximo->item), horario);
 	return 0;
 }
 
