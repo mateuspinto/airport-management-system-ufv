@@ -2,6 +2,10 @@
 #include "horario.h"
 #include <string.h>
 
+int horario_inicializaHorario(horario *ponteiro){
+	ponteiro -> horarioAbsoluto = 0;
+}
+
 /* Retorna um long int que define o horario. Tem como entrada um ponteiro para
 o TAD. Retorna o long int se for bem sucedido. */
 long int horario_getHorarioAbsoluto(horario *ponteiro){
