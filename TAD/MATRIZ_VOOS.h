@@ -9,7 +9,6 @@ typedef struct{
 
 int MATRIZ_VOOS_inicializa(MATRIZ_VOOS *ponteiro);
 int MATRIZ_VOOS_setVoo(MATRIZ_VOOS *ponteiro, VOO *voo);
-int MATRIZ_VOOS_setVoo(MATRIZ_VOOS *ponteiro, VOO *voo);
 int MATRIZ_VOOS_delVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID);
 int MATRIZ_VOOS_getVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID);
 int MATRIZ_VOOS_showVoosDecolagemPouso(MATRIZ_VOOS *ponteiro, horario *decolagem, horario *pouso);
