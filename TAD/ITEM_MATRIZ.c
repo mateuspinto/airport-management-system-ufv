@@ -9,7 +9,7 @@
 int ITEM_MATRIZ_inicializa(ITEM_MATRIZ *ponteiro){
     LISTA_DE_VOOS_criaLista(&(ponteiro->item));
     ponteiro->numVoos=0;
-    //criar função zera horario
+    //horario_inicializaHorario(&(ponteiro->horario));
     return 0;
 }
 
@@ -18,6 +18,7 @@ int ITEM_MATRIZ_setItemMatriz(ITEM_MATRIZ *ponteiro, LISTA_DE_VOOS *item, horari
     ponteiro->item=*item;
     ponteiro->numVoos=item->numItens;
     ponteiro->ultimaAtualizacao=*ultimaAtualizacao;
+
     return 0;
 }
 
