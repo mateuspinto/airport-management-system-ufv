@@ -72,27 +72,26 @@ int main(){
 			swapHorario1 = malloc(sizeof(horario));
 			horario_inicializa(swapHorario1);
 			horario_setHorario(swapHorario1, swapUnsInt1, swapUnsInt2);
-			printf("sdasdsada\n");
 
 
 			swapHorario2 = malloc(sizeof(horario));
 			horario_inicializa(swapHorario2);
 			horario_setHorario(swapHorario1, swapUnsInt3, swapUnsInt4);
-			printf("cuzao\n");
 
 			swapVoo = malloc(sizeof(VOO));
 			VOO_inicializa(swapVoo);
-			printf("cuzao\n");
-
 
 			VOO_setHorarioDecolagem(swapVoo, swapHorario1);
 			VOO_setHorarioPouso(swapVoo, swapHorario2);
-			printf("cuzao\n");
-
 
 			retorno = MATRIZ_VOOS_setVoo(ponteiroMatriz,swapVoo);
+
+			free(swapVoo);
+			free(swapHorario1);
+			free(swapHorario2);
+
 			printarRetorno(retorno);
-			printf("sdasdsada\n");
+
 			break;
 		
 		case 'c':
