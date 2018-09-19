@@ -9,7 +9,7 @@
 int MATRIZ_VOOS_inicializa(MATRIZ_VOOS *ponteiro){
     ITEM_MATRIZ_inicializa(&(ponteiro->item_matriz));
     ponteiro->totalVoos=0;
-    //horario_inicializaHorario(&(ponteiro->data));
+    horario_inicializa(&(ponteiro->data));
 
     return 0;
 }
@@ -29,7 +29,8 @@ int MATRIZ_VOOS_delVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
     }
     return 1;
 }
-int MATRIZ_VOOS_getVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID, VOO *voo){
+int MATRIZ_VOOS_getVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
+    VOO *voo=NULL;
     for(int i=0; i<24; i++){
         for(int j=0; j<24; j++){
             if(LISTA_DE_VOOS_getVoo(&(ponteiro->item_matriz[i][j].item), *VID, voo)==0){
@@ -38,8 +39,21 @@ int MATRIZ_VOOS_getVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID, VOO *voo){
             }
         }
     }
-    return 0;
+    if(voo!=NULL){
+        printf("----------------------------------------------------");
+        printf("VID : %d\n", voo->VID);
+        printf("Aeroporto de decolagem: %s\n", voo->aeroportoDecolagem);
+        printf("Aeroporto de Pouso: %s\n", voo->aeroportoPouso);
+        printf("Horário de decolagem: %d : %d\n", voo->horarioDecolagem.hora, voo->horarioDecolagem.min);
+        printf("Horário de Pouso: %d : %d\n", voo->horarioPouso.hora, voo->horarioPouso.min);
+        printf("Identificador da Pista de Decolagem: %d\n", voo->identificadorPistaDecolagem);
+        printf("----------------------------------------------------");
+
+        return 0;
+    }
+    return 1;
 }
+
 int MATRIZ_VOOS_showVoosDecolagemPouso(MATRIZ_VOOS *ponteiro, horario *decolagem, horario *pouso){
     ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[decolagem->hora][pouso->hora].item.primeiroPtr;
     printf("----------------------------------------------------");
