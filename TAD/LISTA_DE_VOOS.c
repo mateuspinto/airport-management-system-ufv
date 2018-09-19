@@ -20,7 +20,6 @@ int LISTA_DE_VOOS_insereVoo(LISTA_DE_VOOS *lista, VOO *itemInserido){
 
   while((*itemLista).proximo!=NULL){
     itemLista=(*itemLista).proximo;
-    printf("BOCETA\n");
   }
 
   (*itemVoo).proximo=(*itemLista).proximo;

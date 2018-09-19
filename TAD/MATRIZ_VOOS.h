@@ -1,3 +1,6 @@
+#ifndef MATRIZ_VOO_H
+#define MATRIZ_VOO_H
+
 #include "ITEM_MATRIZ.h"
 #include "VOO.h"
 
@@ -20,5 +23,4 @@ int MATRIZ_VOOS_showHorarioMenosVoos(MATRIZ_VOOS *ponteiro);
 int MATRIZ_VOOS_showListaAlteracaoMaisRecente(MATRIZ_VOOS *ponteiro);
 int MATRIZ_VOOS_verificarMatrizEsparca(MATRIZ_VOOS *ponteiro);
 
-
-
+#endif

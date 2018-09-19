@@ -1,9 +1,5 @@
-//
-// Created by vburi on 05/09/2018.
-//
-
-#ifndef XAERO_TP1AEDS_LISTA_VOO_H
-#define XAERO_TP1AEDS_LISTA_VOO_H
+#ifndef LISTA_VOO_H
+#define LISTA_VOO_H
 
 #include "VOO.h"
 
@@ -23,5 +19,4 @@ int LISTA_DE_VOOS_insereVoo(LISTA_DE_VOOS *lista, VOO *item);
 int LISTA_DE_VOOS_removeVoo(LISTA_DE_VOOS *lista, unsigned int VID);
 int LISTA_DE_VOOS_getVoo(LISTA_DE_VOOS *lista, unsigned int VID, VOO *voo);
 
-
-#endif //XAERO_TP1AEDS_LISTA_VOO_H
+#endif //LISTA_VOO_H
