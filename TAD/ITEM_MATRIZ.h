@@ -1,3 +1,6 @@
+#ifndef ITEM_MATRIZ_H
+#define ITEM_MATRIZ_H
+
 #include "LISTA_DE_VOOS.h"
 #include "../TAD_AUXILIAR/horario.h"
 
@@ -26,3 +29,5 @@ void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_getHorarioPouso(ITEM_MATRIZ *ponteiro, unsign
 void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_getAeroportoDecolagem(ITEM_MATRIZ *ponteiro, unsigned int vid, char *aeroporto);
 void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_getAeroportoPouso(ITEM_MATRIZ *ponteiro, unsigned int vid, char *aeroporto);
 int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_getIdentificadorPistaDecolagem(ITEM_MATRIZ *ponteiro, unsigned int vid);
+
+#endif
