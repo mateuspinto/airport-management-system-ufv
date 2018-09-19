@@ -37,9 +37,10 @@ int MATRIZ_VOOS_getVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
     VOO *voo=NULL;
     for(int i=0; i<24; i++){
         for(int j=0; j<24; j++){
-            if(LISTA_DE_VOOS_getVoo(&(ponteiro->item_matriz[i][j].item), *VID, voo)==0){
+            if(LISTA_DE_VOOS_getVoo(&(ponteiro->item_matriz[i][j].item), *VID, &voo)==0){
                 i=24;
                 j=24;
+                printf("sdasdasdas\n");
             }
         }
     }
@@ -63,11 +64,11 @@ int MATRIZ_VOOS_showVoosDecolagemPouso(MATRIZ_VOOS *ponteiro, horario *decolagem
     printf("----------------------------------------------------");
     while(swapListaDeVoos->proximo!=NULL){
         printf("VID : %d\n", swapListaDeVoos->item.VID);
+        printf("Identificador da Pista de Decolagem: %d\n", swapListaDeVoos->item.identificadorPistaDecolagem);
         printf("Aeroporto de decolagem: %s\n", swapListaDeVoos->item.aeroportoDecolagem);
         printf("Aeroporto de Pouso: %s\n", swapListaDeVoos->item.aeroportoPouso);
-        printf("Horário de decolagem: %d : %d\n", swapListaDeVoos->item.horarioDecolagem.hora, swapListaDeVoos->item.horarioDecolagem.min);
+        printf("Horario de decolagem: %d : %d\n", swapListaDeVoos->item.horarioDecolagem.hora, swapListaDeVoos->item.horarioDecolagem.min);
         printf("Horário de Pouso: %d : %d\n", swapListaDeVoos->item.horarioPouso.hora, swapListaDeVoos->item.horarioPouso.min);
-        printf("Identificador da Pista de Decolagem: %d\n", swapListaDeVoos->item.identificadorPistaDecolagem);
         printf("----------------------------------------------------");
         swapListaDeVoos=swapListaDeVoos->proximo;
     }
@@ -111,7 +112,7 @@ int MATRIZ_VOOS_showVoos(MATRIZ_VOOS *ponteiro){
     printf("----------------------------------------------------");
     for(int i=0; i<24; i++){
         for(int j=0; j<24; j++){
-            if(ponteiro->item_matriz[i][j].item.numItens>0){
+            if(1==1){
                 ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[i][j].item.primeiroPtr;
                 while(swapListaDeVoos->proximo!=NULL){
                     printf("VID : %d\n", swapListaDeVoos->item.VID);
@@ -122,6 +123,7 @@ int MATRIZ_VOOS_showVoos(MATRIZ_VOOS *ponteiro){
                     printf("Identificador da Pista de Decolagem: %d\n", swapListaDeVoos->item.identificadorPistaDecolagem);
                     printf("----------------------------------------------------");
                     swapListaDeVoos=swapListaDeVoos->proximo;
+                    printf("PPK\n");
                 }
             }
         }
