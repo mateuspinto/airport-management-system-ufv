@@ -3,13 +3,13 @@
 #include "ITEM_MATRIZ.h"
 #include "LISTA_DE_VOOS.h"
 #include "../TAD_AUXILIAR/horario.h"
-
+#include "VOO.h"
 
 // Inicializa o TAD ITEM_MATRIZ
 int ITEM_MATRIZ_inicializa(ITEM_MATRIZ *ponteiro){
     LISTA_DE_VOOS_criaLista(&(ponteiro->item));
     ponteiro->numVoos=0;
-    //horario_inicializaHorario(&(ponteiro->horario));
+    horario_inicializaHorario(&(ponteiro->ultimaAtualizacao));
     return 0;
 }
 
@@ -18,12 +18,17 @@ int ITEM_MATRIZ_setItemMatriz(ITEM_MATRIZ *ponteiro, LISTA_DE_VOOS *item, horari
     ponteiro->item=*item;
     ponteiro->numVoos=item->numItens;
     ponteiro->ultimaAtualizacao=*ultimaAtualizacao;
-
+    
     return 0;
 }
 
 // Definindo o protótipo das funções set. Retornam 0 se der certo.
 int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setHorarioDecolagem(ITEM_MATRIZ *ponteiro, unsigned int vid, horario *horario){
+    ITEM_LISTA_DE_VOOS *swapItemMatriz=ponteiro->item.primeiroPtr;
+    while(swapItemMatriz->proximo!=NULL && swapItemMatriz->item.VID!=vid){
+        swapItemMatriz=swapItemMatriz->proximo;
+    }
+    VOO_setHorarioDecolagem(swapItemMatriz->proximo, horario);
 	return 0;
 }
 

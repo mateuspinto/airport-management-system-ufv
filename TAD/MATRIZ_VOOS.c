@@ -92,16 +92,18 @@ int MATRIZ_VOOS_showVoos(MATRIZ_VOOS *ponteiro){
     printf("----------------------------------------------------");
     for(int i=0; i<24; i++){
         for(int j=0; j<24; j++){
-            ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[i][j].item.primeiroPtr;
-            while(swapListaDeVoos->proximo!=NULL){
-                printf("VID : %d\n", swapListaDeVoos->item.VID);
-                printf("Aeroporto de decolagem: %s\n", swapListaDeVoos->item.aeroportoDecolagem);
-                printf("Aeroporto de Pouso: %s\n", swapListaDeVoos->item.aeroportoPouso);
-                printf("Horário de decolagem: %d : %d\n", swapListaDeVoos->item.horarioDecolagem.hora, swapListaDeVoos->item.horarioDecolagem.min);
-                printf("Horário de Pouso: %d : %d\n", swapListaDeVoos->item.horarioPouso.hora, swapListaDeVoos->item.horarioPouso.min);
-                printf("Identificador da Pista de Decolagem: %d\n", swapListaDeVoos->item.identificadorPistaDecolagem);
-                printf("----------------------------------------------------");
-                swapListaDeVoos=swapListaDeVoos->proximo;
+            if(ponteiro->item_matriz[i][j].item.numItens>0){
+                ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[i][j].item.primeiroPtr;
+                while(swapListaDeVoos->proximo!=NULL){
+                    printf("VID : %d\n", swapListaDeVoos->item.VID);
+                    printf("Aeroporto de decolagem: %s\n", swapListaDeVoos->item.aeroportoDecolagem);
+                    printf("Aeroporto de Pouso: %s\n", swapListaDeVoos->item.aeroportoPouso);
+                    printf("Horário de decolagem: %d : %d\n", swapListaDeVoos->item.horarioDecolagem.hora, swapListaDeVoos->item.horarioDecolagem.min);
+                    printf("Horário de Pouso: %d : %d\n", swapListaDeVoos->item.horarioPouso.hora, swapListaDeVoos->item.horarioPouso.min);
+                    printf("Identificador da Pista de Decolagem: %d\n", swapListaDeVoos->item.identificadorPistaDecolagem);
+                    printf("----------------------------------------------------");
+                    swapListaDeVoos=swapListaDeVoos->proximo;
+                }
             }
         }
     }
@@ -144,6 +146,7 @@ int MATRIZ_VOOS_showHorarioMenosVoos(MATRIZ_VOOS *ponteiro){
     printf("Quantidade de voos: %d\n:", menorNumero);
     return 0;
 }
+
 int MATRIZ_VOOS_showListaAlteracaoMaisRecente(MATRIZ_VOOS *ponteiro){
     int m=0;
     int n=0;
@@ -162,4 +165,24 @@ int MATRIZ_VOOS_showListaAlteracaoMaisRecente(MATRIZ_VOOS *ponteiro){
     printf("Coluna: %d\n:", n);
     return 0;
 }
-int MATRIZ_VOOS_verificarMatrizEsparca(MATRIZ_VOOS *ponteiro);
+
+int MATRIZ_VOOS_verificarMatrizEsparca(MATRIZ_VOOS *ponteiro){
+    int celulasVazia=0;
+    int celulasPreenchidas=0;
+    for(int i=0; i<24; i++){
+        for(int j=0; j<24; j++){
+            if(ponteiro->item_matriz[i][j].numVoos!=0){
+                celulasPreenchidas+=1;
+            }else{
+                celulasVazia+=1;
+            }
+        }
+    }
+    if(celulasVazia>=(celulasPreenchidas*2)){
+        printf("A Matriz é esparça!");
+    }else{
+        printf("A Matriz não é esparça!");
+    }
+    
+    return 0;
+}
