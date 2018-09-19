@@ -7,7 +7,11 @@
 #include "../TAD_AUXILIAR/horario.h"
 
 int MATRIZ_VOOS_inicializa(MATRIZ_VOOS *ponteiro){
-    ITEM_MATRIZ_inicializa(&(ponteiro->item_matriz));
+    for(int i=0; i<24; i++){
+        for(int j=0; j<24; j++){
+            ITEM_MATRIZ_inicializa(&(ponteiro->item_matriz[i][j]));
+        }
+    }
     ponteiro->totalVoos=0;
     horario_inicializa(&(ponteiro->data));
 
