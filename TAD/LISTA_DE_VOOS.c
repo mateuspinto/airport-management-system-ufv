@@ -33,14 +33,30 @@ int LISTA_DE_VOOS_insereVoo(LISTA_DE_VOOS *lista, VOO *itemInserido){
 
 int LISTA_DE_VOOS_removeVoo(LISTA_DE_VOOS *lista, unsigned int VID){
   ITEM_LISTA_DE_VOOS *swapItemListaVoos=lista->primeiroPtr;
-  ITEM_LISTA_DE_VOOS *swapItemListaVoosAnterior=NULL;
+  ITEM_LISTA_DE_VOOS *swapItemListaVoosAnterior=NULL; 
   while(swapItemListaVoos->proximo!=NULL && swapItemListaVoos->item.VID!=VID){
-
+    swapItemListaVoosAnterior=swapItemListaVoos;
+    swapItemListaVoos=swapItemListaVoos->proximo;
+  }
+  if(swapItemListaVoos->item.VID==VID){
+    swapItemListaVoosAnterior->proximo=swapItemListaVoos->proximo;
+    free(swapItemListaVoos);
+    
+    return 0;
   }
 
-  return 0;
+  return 1;
 }
 
 int LISTA_DE_VOOS_getVoo(LISTA_DE_VOOS *lista, unsigned int VID, VOO *voo){
-  return 0;
+  ITEM_LISTA_DE_VOOS *swapItemListaVoos=lista->primeiroPtr;
+  while(swapItemListaVoos->proximo!=NULL && swapItemListaVoos->item.VID!=VID){
+    swapItemListaVoos=swapItemListaVoos->proximo;
+  }
+  if(swapItemListaVoos->item.VID==VID){
+    *voo=swapItemListaVoos->item;
+    return 0;
+  }
+
+  return 1;
 }
