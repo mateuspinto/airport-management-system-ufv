@@ -107,7 +107,59 @@ int MATRIZ_VOOS_showVoos(MATRIZ_VOOS *ponteiro){
     }
     return 0;
 }
-int MATRIZ_VOOS_showHorarioMaisVoos(MATRIZ_VOOS *ponteiro);
-int MATRIZ_VOOS_showHorarioMenosVoos(MATRIZ_VOOS *ponteiro);
-int MATRIZ_VOOS_showListaAlteracaoMaisRecente(MATRIZ_VOOS *ponteiro);
+int MATRIZ_VOOS_showHorarioMaisVoos(MATRIZ_VOOS *ponteiro){
+    int m=0;
+    int n=0;
+    int maiorNumero=0;
+    for(int i=0; i<24; i++){
+        for(int j=0; j<24; j++){
+            if(ponteiro->item_matriz[i][j].numVoos>maiorNumero){
+                maiorNumero=ponteiro->item_matriz[i][j].numVoos;
+                m=i;
+                n=j;
+            }
+        }
+    }
+    printf("Linha: %d\n:", m);
+    printf("Coluna: %d\n:", n);
+    printf("Quantidade de voos: %d\n:", maiorNumero);
+    return 0;
+}
+
+int MATRIZ_VOOS_showHorarioMenosVoos(MATRIZ_VOOS *ponteiro){
+    int m=0;
+    int n=0;
+    int menorNumero=0;
+    for(int i=0; i<24; i++){
+        for(int j=0; j<24; j++){
+            if(ponteiro->item_matriz[i][j].numVoos<menorNumero){
+                menorNumero=ponteiro->item_matriz[i][j].numVoos;
+                m=i;
+                n=j;
+            }
+        }
+    }
+    printf("Linha: %d\n:", m);
+    printf("Coluna: %d\n:", n);
+    printf("Quantidade de voos: %d\n:", menorNumero);
+    return 0;
+}
+int MATRIZ_VOOS_showListaAlteracaoMaisRecente(MATRIZ_VOOS *ponteiro){
+    int m=0;
+    int n=0;
+    int maiorMinuto=0;
+    for(int i=0; i<24; i++){
+        for(int j=0; j<24; j++){
+            int minutos=60*(ponteiro->item_matriz[i][j].ultimaAtualizacao.hora)+(ponteiro->item_matriz[i][j].ultimaAtualizacao.min);
+            if(minutos>maiorMinuto){
+                maiorMinuto=minutos;
+                m=i;
+                n=j;
+            }
+        }
+    }
+    printf("Linha: %d\n:", m);
+    printf("Coluna: %d\n:", n);
+    return 0;
+}
 int MATRIZ_VOOS_verificarMatrizEsparca(MATRIZ_VOOS *ponteiro);
