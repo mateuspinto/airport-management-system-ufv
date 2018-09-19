@@ -54,7 +54,7 @@ int LISTA_DE_VOOS_getVoo(LISTA_DE_VOOS *lista, unsigned int VID, VOO *voo){
     swapItemListaVoos=swapItemListaVoos->proximo;
   }
   if(swapItemListaVoos->item.VID==VID){
-    *voo=swapItemListaVoos->item;
+    voo=&(swapItemListaVoos->item);
     return 0;
   }
 
