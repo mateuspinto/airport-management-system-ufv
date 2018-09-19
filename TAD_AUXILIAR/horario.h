@@ -5,26 +5,18 @@ definidos */
 
 // Incluindo bibliotecas necessárias e/ou TADs auxiliares.
 #include <stdlib.h>
-
-/* Usamos a biblioteca time para converter medida de tempo num long int, pois
-time_t não é nada mais do que um typedef desse tipo primitivo */
-#include <time.h>
 #include <string.h>
 
 // Definindo struct do TAD e o declarando como um tipo.
 typedef struct {
-  time_t horarioAbsoluto;
+  unsigned int hora;
+  unsigned int min;
 } horario;
 
 // Prototipos das funções
 int horario_inicializaHorario(horario *ponteiro);
-long int horario_getHorarioAbsoluto(horario *ponteiro);
-int horario_setHorarioAbosluto(horario *ponteiro, long int horario);
-int horario_compararHorarios(horario *ponteiro1, horario *ponteiro2);
 int horario_ehFuturo(horario *ponteiro1, horario *ponteiro2);
-int horario_setHorario(horario *ponteiro, int seg, int min, int hora, int dia,
-                      int mes, int ano);
-void horario_getHorarioString(horario *ponteiro, char *string);
+int horario_setHorario(horario *ponteiro, int min, int hora);
 
 // Fim do define
 #endif // HOARIO_H_INCLUDED
