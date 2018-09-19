@@ -28,24 +28,64 @@ int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setHorarioDecolagem(ITEM_MATRIZ *ponteiro, uns
     while(swapItemMatriz->proximo!=NULL && swapItemMatriz->item.VID!=vid){
         swapItemMatriz=swapItemMatriz->proximo;
     }
-    VOO_setHorarioDecolagem(&(swapItemMatriz->proximo->item), horario);
-	return 0;
+    if(swapItemMatriz->item.VID==vid){
+        VOO_setHorarioDecolagem(&(swapItemMatriz->proximo->item), horario);
+        return 0;
+    }
+    
+	return 1;
 }
 
 int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setHorarioPouso(ITEM_MATRIZ *ponteiro, unsigned int vid, horario *horario){
-	return 0;
+    ITEM_LISTA_DE_VOOS *swapItemMatriz=ponteiro->item.primeiroPtr;
+    while(swapItemMatriz->proximo!=NULL && swapItemMatriz->item.VID!=vid){
+        swapItemMatriz=swapItemMatriz->proximo;
+    }
+    if(swapItemMatriz->item.VID==vid){
+        VOO_setHorarioPouso(&(swapItemMatriz->proximo->item), horario);
+        return 0;
+    }
+
+	return 1;
 }
 
 int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setAeroportoDecolagem(ITEM_MATRIZ *ponteiro, unsigned int vid, char *aeroporto){
-	return 0;
+	ITEM_LISTA_DE_VOOS *swapItemMatriz=ponteiro->item.primeiroPtr;
+    while(swapItemMatriz->proximo!=NULL && swapItemMatriz->item.VID!=vid){
+        swapItemMatriz=swapItemMatriz->proximo;
+    }
+    if(swapItemMatriz->item.VID==vid){
+        VOO_setAeroportoDecolagem(&(swapItemMatriz->proximo->item), aeroporto);
+        return 0;
+    }
+
+	return 1;
 }
 
 int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setAeroportoPouso(ITEM_MATRIZ *ponteiro, unsigned int vid, char *aeroporto){
-	return 0;
+	ITEM_LISTA_DE_VOOS *swapItemMatriz=ponteiro->item.primeiroPtr;
+    while(swapItemMatriz->proximo!=NULL && swapItemMatriz->item.VID!=vid){
+        swapItemMatriz=swapItemMatriz->proximo;
+    }
+    if(swapItemMatriz->item.VID==vid){
+        VOO_setAeroportoPouso(&(swapItemMatriz->proximo->item), aeroporto);
+        return 0;
+    }
+
+	return 1;
 }
 
 int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setIdentificadorPistaDecolagem(ITEM_MATRIZ *ponteiro, unsigned int vid, unsigned int identificador){
-	return 0;
+	ITEM_LISTA_DE_VOOS *swapItemMatriz=ponteiro->item.primeiroPtr;
+    while(swapItemMatriz->proximo!=NULL && swapItemMatriz->item.VID!=vid){
+        swapItemMatriz=swapItemMatriz->proximo;
+    }
+    if(swapItemMatriz->item.VID==vid){
+        VOO_setIdentificadorPistaDecolagem(&(swapItemMatriz->proximo->item), identificador);
+        return 0;
+    }
+
+	return 1;
 }
 
 /* Definindo o protótipo das funções get. Retornam o dado caso seja de um tipo
