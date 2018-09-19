@@ -131,6 +131,8 @@ int main(){
 			swapUnsInt1=0;
 			scanf("%d", &swapUnsInt1);
 
+			retorno = MATRIZ_VOOS_getVoo(ponteiroMatriz, &swapUnsInt1);
+			printarRetorno(retorno);
 			
 			break;
 		
