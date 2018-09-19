@@ -16,17 +16,12 @@ int LISTA_DE_VOOS_insereVoo(LISTA_DE_VOOS *lista, VOO *itemInserido){
   (*itemVoo).proximo=NULL;
   ITEM_LISTA_DE_VOOS *itemLista=lista->primeiroPtr;
 
-  printf("primeiro == %p\n", itemLista);
-
   while((*itemLista).proximo!=NULL){
     itemLista=(*itemLista).proximo;
   }
 
   (*itemVoo).proximo=(*itemLista).proximo;
   (*itemLista).proximo=itemVoo;
-
-  printf("ponteiro ==%p\n", itemLista);
-  printf("proximo == %p\n", itemLista->proximo);
 
   return 0;
 }

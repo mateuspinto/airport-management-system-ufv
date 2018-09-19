@@ -23,10 +23,11 @@ int MATRIZ_VOOS_delVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
             if(LISTA_DE_VOOS_removeVoo(&(ponteiro->item_matriz[0][0].item), *VID)==0){
                 i=24;
                 j=24;
+                return 0;
             }
         }
     }
-    return 0;
+    return 1;
 }
 int MATRIZ_VOOS_getVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
     VOO *voo=NULL;

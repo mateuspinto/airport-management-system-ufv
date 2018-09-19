@@ -116,10 +116,22 @@ int main(){
 		
 		case 'c':
 
+			printf("Digite um VID: ");
+			swapUnsInt1=0;
+			scanf("%d", &swapUnsInt1);
+
+			retorno = MATRIZ_VOOS_delVoo(ponteiroMatriz, &swapUnsInt1);
+
+			printarRetorno(retorno);
 			break;
 		
 		case 'd':
 
+			printf("Digite um VID: ");
+			swapUnsInt1=0;
+			scanf("%d", &swapUnsInt1);
+
+			
 			break;
 		
 		case 'e':

@@ -1,5 +1,6 @@
 // Incluindo header do TAD e/ou bibliotecas necessárias
 #include "VOO.h"
+#include <time.h>
 
 /* Limpa a memória para um TAD. Tem como entrada um ponteiro para o TAD e
    retorna 0 se for bem sucedido */
@@ -11,6 +12,12 @@ int VOO_inicializa(VOO *ponteiro){
         ponteiro -> aeroportoPouso[i] = ' ';
     }
     ponteiro -> identificadorPistaDecolagem = 0;
+
+    srand(time(NULL));
+    ponteiro -> VID = (rand() % 10000);
+
+    printf("########################################################################################################\n");
+    printf("#                                             VID %d                                                 #\n", ponteiro -> VID);
 
     return 0;
 }
