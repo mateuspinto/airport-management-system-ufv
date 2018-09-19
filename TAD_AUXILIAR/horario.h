@@ -17,6 +17,7 @@ typedef struct {
 } horario;
 
 // Prototipos das funções
+int horario_inicializaHorario(horario *ponteiro);
 long int horario_getHorarioAbsoluto(horario *ponteiro);
 int horario_setHorarioAbosluto(horario *ponteiro, long int horario);
 int horario_compararHorarios(horario *ponteiro1, horario *ponteiro2);
