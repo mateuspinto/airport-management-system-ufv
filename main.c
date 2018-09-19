@@ -10,11 +10,25 @@
 #include "TAD/ITEM_MATRIZ.h"
 #include "TAD/MATRIZ_VOOS.h"
 
+void printarRetorno(int retorno){
+	if(retorno==0){
+		printf("Feito!\n");
+	} else {
+		printf("Erro. Tente novamente\n");
+	}
+}
+
 int main(){
 
+	MATRIZ_VOOS matriz;
+	MATRIZ_VOOS *ponteiroMatriz = &matriz;
+
 	char input = ' ';
-	char swapString[30];
-	unsigned int swapUnsInt1, swapUnsInt2, swapUnsInt3;
+	char swapString1[30], swapString2[30];
+	unsigned int swapUnsInt1, swapUnsInt2, swapUnsInt3, swapUnsInt4;
+	VOO * swapVoo;
+	horario *swapHorario1, *swapHorario2;
+	int retorno = 1;
 	
 
 	printf("##############################################################\n");
@@ -46,11 +60,28 @@ int main(){
 
 		switch(input){
 		case 'a':
-
+			retorno = MATRIZ_VOOS_inicializa(ponteiroMatriz);
+			printarRetorno(retorno);
 			break;
 
 		case 'b':
+			printf("Digite o VOO nesse formato: XX:XX YY:YY AEROPORTO_DECOL AEROPORTO_POUSO IDENTIFICADOR_PIST\n");
+			scanf("%d:%d %d:%d %s %s %d", &swapUnsInt1, &swapUnsInt2, &swapUnsInt3, &swapUnsInt4, swapString1, swapString2);
+			
+			horario_inicializa(swapHorario1);
+			horario_setHorario(swapHorario1, swapUnsInt1, swapUnsInt2);
 
+			horario_inicializa(swapHorario2);
+			horario_setHorario(swapHorario1, swapUnsInt3, swapUnsInt4);
+
+			swapVoo = malloc(sizeof(VOO));
+			VOO_inicializa(swapVoo);
+
+			VOO_setHorarioDecolagem(swapVoo, swapHorario1);
+			VOO_setHorarioPouso(swapVoo, swapHorario2);
+
+			retorno = MATRIZ_VOOS_setVoo(ponteiroMatriz,swapVoo);
+			printarRetorno(retorno);
 			break;
 		
 		case 'c':
