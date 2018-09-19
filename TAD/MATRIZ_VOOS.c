@@ -3,6 +3,7 @@
 #include "VOO.h"
 #include "LISTA_DE_VOOS.h"
 #include <stdlib.h>
+#include <stdio.h>
 #include "../TAD_AUXILIAR/horario.h"
 
 int MATRIZ_VOOS_inicializa(MATRIZ_VOOS *ponteiro){
@@ -13,14 +14,38 @@ int MATRIZ_VOOS_inicializa(MATRIZ_VOOS *ponteiro){
     return 0;
 }
 int MATRIZ_VOOS_setVoo(MATRIZ_VOOS *ponteiro, VOO *voo){
-    LISTA_DE_VOOS_insereVoo(&(ponteiro->item_matriz[voo->horarioDecolagem][voo->horarioPouso].item), voo);
+    LISTA_DE_VOOS_insereVoo(&(ponteiro->item_matriz[voo->horarioDecolagem.hora][voo->horarioPouso.hora].item), voo);
     return 0;
 }
 int MATRIZ_VOOS_delVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
-    
+    for(int i=0; i<24; i++){
+        for(int j=0; j<24; j++){
+            if(LISTA_DE_VOOS_removeVoo(&(ponteiro->item_matriz[0][0].item), *VID)==0){
+                i=24;
+                j=24;
+            }
+        }
+    }
+    return 0;
 }
-int MATRIZ_VOOS_getVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID);
-int MATRIZ_VOOS_showVoosDecolagemPouso(MATRIZ_VOOS *ponteiro, horario *decolagem, horario *pouso);
+int MATRIZ_VOOS_getVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID, VOO *voo){
+    for(int i=0; i<24; i++){
+        for(int j=0; j<24; j++){
+            if(LISTA_DE_VOOS_getVoo(&(ponteiro->item_matriz[0][0].item), *VID, voo)==0){
+                i=24;
+                j=24;
+            }
+        }
+    }
+    return 0;
+}
+int MATRIZ_VOOS_showVoosDecolagemPouso(MATRIZ_VOOS *ponteiro, horario *decolagem, horario *pouso){
+    ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[decolagem->hora][pouso->hora].item.primeiroPtr;
+    while(swapListaDeVoos->proximo!=NULL){
+        printf("%d\n", swapListaDeVoos->item.VID);
+    }
+
+}
 int MATRIZ_VOOS_showVoosDecolagem(MATRIZ_VOOS *ponteiro, horario *decolagem);
 int MATRIZ_VOOS_showVoosPouso(MATRIZ_VOOS *ponteiro, horario *pouso);
 int MATRIZ_VOOS_showVoos(MATRIZ_VOOS *ponteiro);
