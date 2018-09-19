@@ -9,7 +9,7 @@
 int ITEM_MATRIZ_inicializa(ITEM_MATRIZ *ponteiro){
     LISTA_DE_VOOS_criaLista(&(ponteiro->item));
     ponteiro->numVoos=0;
-    horario_inicializaHorario(&(ponteiro->ultimaAtualizacao));
+    horario_inicializa(&(ponteiro->ultimaAtualizacao));
     return 0;
 }
 

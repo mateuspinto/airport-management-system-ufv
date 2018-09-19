@@ -30,6 +30,7 @@ int main(){
 	horario *swapHorario1, *swapHorario2;
 	int retorno = 1;
 	
+	MATRIZ_VOOS_inicializa(ponteiroMatriz);
 
 	printf("##############################################################\n");
 	printf("#        Seja-bem vindo ao xAero Airport System              #\n");
