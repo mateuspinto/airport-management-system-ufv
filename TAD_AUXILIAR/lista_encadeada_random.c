@@ -33,14 +33,5 @@ int lista_encadeada_random_removeVID(lista_encadeada_random *lista, unsigned int
     item_lista_encadeada_random *ponteiro = lista -> primeiroPtr ->proximo;
     item_lista_encadeada_random *swap = NULL;
 
-  while(ponteiro!=NULL){
-    if(ponteiro -> proximo -> VID == VID){
-        swap = ponteiro -> proximo;
-        ponteiro -> proximo = ponteiro -> proximo -> proximo;
-        free(swap);
-    };
-    ponteiro = ponteiro->proximo;
-  }
-
     return 0;
 }

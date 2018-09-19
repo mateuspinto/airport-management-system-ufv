@@ -14,9 +14,9 @@ typedef struct {
 } horario;
 
 // Prototipos das funções
-int horario_inicializaHorario(horario *ponteiro);
+int horario_inicializa(horario *ponteiro);
 int horario_ehFuturo(horario *ponteiro1, horario *ponteiro2);
-int horario_setHorario(horario *ponteiro, int min, int hora);
+int horario_setHorario(horario *ponteiro, unsigned int hora, unsigned int min);
 
 // Fim do define
 #endif // HOARIO_H_INCLUDED

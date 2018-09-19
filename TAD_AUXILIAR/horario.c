@@ -1,9 +1,11 @@
 // Incluindo bibliotecas necessárias e/ou TADs auxiliares.
 #include "horario.h"
 
-int horario_inicializaHorario(horario *ponteiro){
+int horario_inicializa(horario *ponteiro){
 	ponteiro -> hora = 0;
 	ponteiro -> min = 0;
+
+  return 0;
 }
 
 /* Define se os horarios estao em ordem crescente. Tem como entrada dois
@@ -23,7 +25,7 @@ int horario_ehFuturo(horario *ponteiro1, horario *ponteiro2){
 /* Preenche o TAD horario com dia, mes e etc. Tem como entrada um ponteiro
 para o TAD, int para segundos, int para minutos, int para horas, int para dia,
 int para mes e int para ano. Retorna 0 se for bem sucedido */
-int horario_setHorario(horario *ponteiro, int min, int hora){
+int horario_setHorario(horario *ponteiro, unsigned int hora, unsigned int min){
     ponteiro -> hora = hora;
     ponteiro -> min = min;
 
