@@ -41,11 +41,22 @@ int LISTA_DE_VOOS_removeVoo(LISTA_DE_VOOS *lista, unsigned int VID){
   if(swapItemListaVoos->item.VID==VID){
     swapItemListaVoosAnterior->proximo=swapItemListaVoos->proximo;
     free(swapItemListaVoos);
+    
+    return 0;
   }
-  
-  return 0;
+
+  return 1;
 }
 
 int LISTA_DE_VOOS_getVoo(LISTA_DE_VOOS *lista, unsigned int VID, VOO *voo){
-  return 0;
+  ITEM_LISTA_DE_VOOS *swapItemListaVoos=lista->primeiroPtr;
+  while(swapItemListaVoos->proximo!=NULL && swapItemListaVoos->item.VID!=VID){
+    swapItemListaVoos=swapItemListaVoos->proximo;
+  }
+  if(swapItemListaVoos->item.VID==VID){
+    *voo=swapItemListaVoos->item;
+    return 0;
+  }
+
+  return 1;
 }
