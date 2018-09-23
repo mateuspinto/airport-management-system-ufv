@@ -31,3 +31,7 @@ int horario_setHorario(horario *ponteiro, unsigned int hora, unsigned int min){
 
     return 0;
 }
+
+void horario_showHorario(horario *ponteiro){
+  print("%d:%d", ponteiro->hora, ponteiro->min);
+}

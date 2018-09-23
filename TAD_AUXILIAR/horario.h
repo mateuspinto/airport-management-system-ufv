@@ -17,6 +17,7 @@ typedef struct {
 int horario_inicializa(horario *ponteiro);
 int horario_ehFuturo(horario *ponteiro1, horario *ponteiro2);
 int horario_setHorario(horario *ponteiro, unsigned int hora, unsigned int min);
+void horario_showHorario(horario *ponteiro);
 
 // Fim do define
 #endif // HOARIO_H_INCLUDED

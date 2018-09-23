@@ -50,8 +50,26 @@ int LISTA_DE_VOOS_getVoo(LISTA_DE_VOOS *lista, unsigned int VID, VOO *voo){
   }
   if(swapItemListaVoos->item.VID==VID){
     voo=&(swapItemListaVoos->item);
+    VOO_showAeroportoDecolagem(&(swapItemListaVoos->item));
+    VOO_showAeroportoPouso(&(swapItemListaVoos->item));
+    VOO_showHorarioDecolagem(&(swapItemListaVoos->item));
+    VOO_showHorarioPouso(&(swapItemListaVoos->item));
     return 0;
   }
 
   return 1;
+}
+
+void LISTA_DE_VOOS_showVoo(LISTA_DE_VOOS *lista, unsigned int VID){
+  ITEM_LISTA_DE_VOOS *swapItemListaVoos=lista->primeiroPtr;
+  while(swapItemListaVoos->proximo!=NULL && swapItemListaVoos->item.VID!=VID){
+    swapItemListaVoos=swapItemListaVoos->proximo;
+  }
+  if(swapItemListaVoos->item.VID==VID){
+    VOO_showAeroportoDecolagem(&(swapItemListaVoos->item));
+    VOO_showAeroportoPouso(&(swapItemListaVoos->item));
+    VOO_showHorarioDecolagem(&(swapItemListaVoos->item));
+    VOO_showHorarioPouso(&(swapItemListaVoos->item));
+    VOO_showIdentificadorPistaDecolagem(&(swapItemListaVoos->item));
+  }
 }

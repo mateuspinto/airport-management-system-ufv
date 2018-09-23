@@ -118,3 +118,57 @@ int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_getIdentificadorPistaDecolagem(ITEM_MATRIZ *po
 	return 0;
 }
 
+// void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showVID(ITEM_MATRIZ *ponteiro){
+
+// }
+void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showHorarioDecolagem(ITEM_MATRIZ *ponteiro, unsigned int vid){
+    ITEM_LISTA_DE_VOOS *swapItemListaVoos=ponteiro->item.primeiroPtr;
+    while(swapItemListaVoos->proximo!=NULL && swapItemListaVoos->item.VID!=vid){
+        swapItemListaVoos=swapItemListaVoos->proximo;
+    }
+
+    if(swapItemListaVoos->item.VID==vid){
+        VOO_showHorarioDecolagem(&(swapItemListaVoos->item));
+    }
+}
+void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showHorarioPouso(ITEM_MATRIZ *ponteiro, unsigned int vid){
+    ITEM_LISTA_DE_VOOS *swapItemListaVoos=ponteiro->item.primeiroPtr;
+    while(swapItemListaVoos->proximo!=NULL && swapItemListaVoos->item.VID!=vid){
+        swapItemListaVoos=swapItemListaVoos->proximo;
+    }
+
+    if(swapItemListaVoos->item.VID==vid){
+        VOO_showAeroportoPouso(&(swapItemListaVoos->item));
+    }
+}
+void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showAeroportoDecolagem(ITEM_MATRIZ *ponteiro, unsigned int vid){
+    ITEM_LISTA_DE_VOOS *swapItemListaVoos=ponteiro->item.primeiroPtr;
+    while(swapItemListaVoos->proximo!=NULL && swapItemListaVoos->item.VID!=vid){
+        swapItemListaVoos=swapItemListaVoos->proximo;
+    }
+
+    if(swapItemListaVoos->item.VID==vid){
+        VOO_showAeroportoDecolagem(&(swapItemListaVoos->item));
+    }
+}
+void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showAeroportoPouso(ITEM_MATRIZ *ponteiro, unsigned int vid){
+    ITEM_LISTA_DE_VOOS *swapItemListaVoos=ponteiro->item.primeiroPtr;
+    while(swapItemListaVoos->proximo!=NULL && swapItemListaVoos->item.VID!=vid){
+        swapItemListaVoos=swapItemListaVoos->proximo;
+    }
+
+    if(swapItemListaVoos->item.VID==vid){
+        VOO_showAeroportoPouso(&(swapItemListaVoos->item));
+    }
+}
+void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showIdentificadorPistaDecolagem(ITEM_MATRIZ *ponteiro, unsigned int vid){
+    ITEM_LISTA_DE_VOOS *swapItemListaVoos=ponteiro->item.primeiroPtr;
+    while(swapItemListaVoos->proximo!=NULL && swapItemListaVoos->item.VID!=vid){
+        swapItemListaVoos=swapItemListaVoos->proximo;
+    }
+
+    if(swapItemListaVoos->item.VID==vid){
+        VOO_showIdentificadorPistaDecolagem(&(swapItemListaVoos->item));
+    }
+}
+
