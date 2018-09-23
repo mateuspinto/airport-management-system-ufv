@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "ITEM_MATRIZ.h"
 #include "LISTA_DE_VOOS.h"
 #include "../TAD_AUXILIAR/horario.h"
 #include "VOO.h"
+#include "ITEM_MATRIZ.h"
 
 // Inicializa o TAD ITEM_MATRIZ
 int ITEM_MATRIZ_inicializa(ITEM_MATRIZ *ponteiro){
