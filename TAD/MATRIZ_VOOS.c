@@ -33,7 +33,7 @@ int MATRIZ_VOOS_delVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
     }
     return 1;
 }
-int MATRIZ_VOOS_showVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
+int MATRIZ_VOOS_getVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
     ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showVoo((ponteiro->item_matriz), VID);
 }
 
