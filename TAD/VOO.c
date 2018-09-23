@@ -109,7 +109,7 @@ int VOO_getIdentificadorPistaDecolagem(VOO *ponteiro){
 }
 
 void VOO_showVID(VOO *ponteiro){
-    print("%d", ponteiro->VID);
+    print("VID : %d", ponteiro->VID);
 }
 void VOO_showHorarioDecolagem(VOO *ponteiro){
     horario_showHorario(&(ponteiro->horarioDecolagem));   
@@ -118,11 +118,19 @@ void VOO_showHorarioPouso(VOO *ponteiro){
     horario_showHorario(&(ponteiro->horarioPouso));   
 }
 void VOO_showAeroportoDecolagem(VOO *ponteiro){
-    print("%s", ponteiro->aeroportoDecolagem);
+    print("Aeroporto de Descolagem: %s", ponteiro->aeroportoDecolagem);
 }
 void VOO_showAeroportoPouso(VOO *ponteiro){
-    print("%s", ponteiro->aeroportoPouso);
+    print("Aeroporto de Pouso: %s", ponteiro->aeroportoPouso);
 }
 int VOO_showIdentificadorPistaDecolagem(VOO *ponteiro){
-    print("%s", ponteiro->identificadorPistaDecolagem);
+    print("Identificador da Pista de Decolagem: %s", ponteiro->identificadorPistaDecolagem);
+}
+int VOO_showVoo(VOO *ponteiro){
+    VOO_showVID(ponteiro);
+    VOO_showAeroportoDecolagem(ponteiro);
+    VOO_showAeroportoPouso(ponteiro);
+    VOO_showIdentificadorPistaDecolagem(ponteiro);
+    VOO_showHorarioDecolagem(&(ponteiro->horarioDecolagem));
+    VOO_showHorarioPouso(&(ponteiro->horarioPouso));
 }

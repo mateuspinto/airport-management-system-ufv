@@ -44,6 +44,7 @@ void VOO_showHorarioPouso(VOO *ponteiro);
 void VOO_showAeroportoDecolagem(VOO *ponteiro);
 void VOO_showAeroportoPouso(VOO *ponteiro);
 int VOO_showIdentificadorPistaDecolagem(VOO *ponteiro);
+int VOO_showVoo(VOO *ponteiro);
 
 // Fim do define
 #endif // VOO_H_INCLUDED

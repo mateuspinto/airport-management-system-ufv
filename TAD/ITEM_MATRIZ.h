@@ -35,5 +35,6 @@ void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showHorarioPouso(ITEM_MATRIZ *ponteiro, unsig
 void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showAeroportoDecolagem(ITEM_MATRIZ *ponteiro, unsigned int vid);
 void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showAeroportoPouso(ITEM_MATRIZ *ponteiro, unsigned int vid);
 void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showIdentificadorPistaDecolagem(ITEM_MATRIZ *ponteiro, unsigned int vid);
+void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showVoo(ITEM_MATRIZ *ponteiro, unsigned int vid);
 
 
