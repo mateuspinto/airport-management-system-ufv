@@ -27,6 +27,7 @@ int MATRIZ_VOOS_delVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
     for(int i=0; i<24; i++){
         for(int j=0; j<24; j++){
             if(LISTA_DE_VOOS_removeVoo(&(ponteiro->item_matriz[i][j].item), *VID)==0){
+                ponteiro->item_matriz[i][j].item.numItens-=1;
                 i=24;
                 j=24;
                 return 0;
