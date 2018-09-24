@@ -183,6 +183,10 @@ int opcaoM(){
 	return MATRIZ_VOOS_verificarMatrizEsparca(ponteiroMatriz);
 }
 
+int salvarArquivo(FILE *salvar){
+	return MATRIZ_VOOS_salvarMatriz(ponteiroMatriz, salvar);
+}
+
 int main(){
 
 	//Colocando endereço da matriz global no ponteiro global
@@ -198,8 +202,9 @@ int main(){
 	//Definindo retorno padrao de funcoes como erro
 	int retorno = 1;
 
-	//Criando um ponteiro para arquivo
+	//Criando um ponteiro para arquivo de leitura e gravacao
 	FILE * arquivo = NULL;
+	FILE * bancoDados = NULL;
 
 	//Inicializando a matriz automaticamente, caso o usuário se esqueça
 	MATRIZ_VOOS_inicializa(ponteiroMatriz);
@@ -337,6 +342,16 @@ int main(){
 		case 'm':
 			opcaoM();
 
+			break;
+
+		case '8':
+			printf("Digite o nome do arquivo que você deseja salvar com a extensao: ");
+			scanf("%s", swapString1);
+			bancoDados = fopen(swapString1, "w+");
+
+			retorno = salvarArquivo(bancoDados);
+			fclose(bancoDados);
+			printarRetorno(retorno);
 			break;
 
 		// O caso 9 é o MODO ARQUIVO, que lê algum arquivo e executa suas instruções
