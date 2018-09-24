@@ -45,7 +45,7 @@ int MATRIZ_VOOS_delVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
     return 1;
 }
 
-//Printa um VOO dado endereco da matriz e o endereco do VID dele
+//Mostra um VOO dado endereco da matriz e o endereco do VID dele
 int MATRIZ_VOOS_getVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
     printf("----------------------------------------------------\n");
     for(int i=0; i<24; i++){
@@ -58,7 +58,7 @@ int MATRIZ_VOOS_getVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
     return 0;
 }
 
-//Printa VOOs dado o endereco da matriz e o endereco de um horario de decolagem e de pouso deles
+//Mostra VOOs dado o endereco da matriz e o endereco de um horario de decolagem e de pouso deles
 int MATRIZ_VOOS_showVoosDecolagemPouso(MATRIZ_VOOS *ponteiro, horario *decolagem, horario *pouso){
     printf("----------------------------------------------------\n");
     if(ponteiro->item_matriz[decolagem->hora][pouso->hora].item.numItens>0){
@@ -72,7 +72,7 @@ int MATRIZ_VOOS_showVoosDecolagemPouso(MATRIZ_VOOS *ponteiro, horario *decolagem
     return 0;
 }
 
-//Printa VOOs dado o endereco da matriz e o endereco de um horario de decolagem
+//Mostra VOOs dado o endereco da matriz e o endereco de um horario de decolagem
 int MATRIZ_VOOS_showVoosDecolagem(MATRIZ_VOOS *ponteiro, horario *decolagem){
   for(int i=0; i<24; i++){
       if(ponteiro->item_matriz[decolagem->hora][i].numVoos>0){
@@ -87,7 +87,7 @@ int MATRIZ_VOOS_showVoosDecolagem(MATRIZ_VOOS *ponteiro, horario *decolagem){
   return 0;
 }
 
-//Printa VOOs dado o endereco da matriz e o endereco de um horario de pouso deles
+//Mostra VOOs dado o endereco da matriz e o endereco de um horario de pouso deles
 int MATRIZ_VOOS_showVoosPouso(MATRIZ_VOOS *ponteiro, horario *pouso){
     for(int i=0; i<24; i++){
         if(ponteiro->item_matriz[i][pouso->hora].numVoos>0){
@@ -102,7 +102,7 @@ int MATRIZ_VOOS_showVoosPouso(MATRIZ_VOOS *ponteiro, horario *pouso){
     return 0;
 }
 
-//Printa todos os VOOS da matriz
+//Mostra todos os VOOS da matriz
 int MATRIZ_VOOS_showVoos(MATRIZ_VOOS *ponteiro){
     printf("----------------------------------------------------\n");
     for(int i=0; i<24; i++){
@@ -120,7 +120,7 @@ int MATRIZ_VOOS_showVoos(MATRIZ_VOOS *ponteiro){
     return 0;
 }
 
-//Printa o horario com o maior numero de VOOs
+//Mostra os indices da matriz com o maior numero de VOOs
 int MATRIZ_VOOS_showHorarioMaisVoos(MATRIZ_VOOS *ponteiro){
     int m=0;
     int n=0;
@@ -140,6 +140,7 @@ int MATRIZ_VOOS_showHorarioMaisVoos(MATRIZ_VOOS *ponteiro){
     return 0;
 }
 
+//Mostra os indices da matriz com o menor numero de VOOs
 int MATRIZ_VOOS_showHorarioMenosVoos(MATRIZ_VOOS *ponteiro){
     int m=0;
     int n=0;
@@ -159,6 +160,7 @@ int MATRIZ_VOOS_showHorarioMenosVoos(MATRIZ_VOOS *ponteiro){
     return 0;
 }
 
+//Mostra os indices da matriz com a alteração mais recente
 int MATRIZ_VOOS_showListaAlteracaoMaisRecente(MATRIZ_VOOS *ponteiro){
     int m=0;
     int n=0;
@@ -178,6 +180,7 @@ int MATRIZ_VOOS_showListaAlteracaoMaisRecente(MATRIZ_VOOS *ponteiro){
     return 0;
 }
 
+//Mostra se a matriz é esparça
 int MATRIZ_VOOS_verificarMatrizEsparca(MATRIZ_VOOS *ponteiro){
     int celulasVazia=0;
     int celulasPreenchidas=0;
