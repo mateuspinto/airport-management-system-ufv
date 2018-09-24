@@ -33,5 +33,5 @@ int horario_setHorario(horario *ponteiro, unsigned int hora, unsigned int min){
 }
 
 void horario_showHorario(horario *ponteiro){
-  printf("%d:%d", ponteiro->hora, ponteiro->min);
+  printf("Horario : %d:%d\n", ponteiro->hora, ponteiro->min);
 }

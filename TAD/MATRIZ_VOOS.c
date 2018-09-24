@@ -18,6 +18,8 @@ int MATRIZ_VOOS_inicializa(MATRIZ_VOOS *ponteiro){
     return 0;
 }
 int MATRIZ_VOOS_setVoo(MATRIZ_VOOS *ponteiro, VOO *voo){
+    VOO_showVoo(voo);
+    ponteiro->item_matriz[voo->horarioDecolagem.hora][voo->horarioPouso.hora].item.numItens+=1;
     LISTA_DE_VOOS_insereVoo(&(ponteiro->item_matriz[voo->horarioDecolagem.hora][voo->horarioPouso.hora].item), voo);
     return 0;
 }
@@ -72,16 +74,17 @@ int MATRIZ_VOOS_showVoosPouso(MATRIZ_VOOS *ponteiro, horario *pouso){
     return 0;
 }
 int MATRIZ_VOOS_showVoos(MATRIZ_VOOS *ponteiro){
-    printf("----------------------------------------------------");
+    printf("----------------------------------------------------\n");
     for(int i=0; i<24; i++){
         for(int j=0; j<24; j++){
             if(ponteiro->item_matriz[i][j].item.numItens>0){
                 ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[i][j].item.primeiroPtr;
-                while(swapListaDeVoos->proximo!=NULL){
-                    VOO_showVoo(&(swapListaDeVoos->item));
-                    printf("----------------------------------------------------");
+                do{
                     swapListaDeVoos=swapListaDeVoos->proximo;
-                }
+                    printf("teste");
+                    VOO_showVoo(&(swapListaDeVoos->item));
+                    printf("----------------------------------------------------\n");
+                }while(swapListaDeVoos->proximo!=NULL);
             }
         }
     }

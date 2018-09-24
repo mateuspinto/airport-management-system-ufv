@@ -9,8 +9,8 @@ definidos */
 
 // Definindo struct do TAD e o declarando como um tipo.
 typedef struct {
-  unsigned int hora;
-  unsigned int min;
+  int hora;
+  int min;
 } horario;
 
 // Prototipos das funções

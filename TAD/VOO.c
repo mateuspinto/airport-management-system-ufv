@@ -34,12 +34,14 @@ int VOO_setVID(VOO *ponteiro, unsigned int VID){
 /* Define o dado Horario de Decolagem do TAD VOO. Tem como entrada um ponteiro para o TAD e
    um int para o horario. Retorna 0 se for bem sucedido. */
 int VOO_setHorarioDecolagem(VOO *ponteiro, horario *horario){
+    ponteiro->horarioDecolagem=*horario;
     return 0;
 }
 
 /* Define o dado Horario de Pouso do TAD VOO. Tem como entrada um ponteiro para o TAD e
    um int para o horario. Retorna 0 se for bem sucedido. */
 int VOO_setHorarioPouso(VOO *ponteiro, horario *horario){
+    ponteiro->horarioPouso=*horario;
     return 0;
 }
 
@@ -63,7 +65,7 @@ int VOO_setAeroportoPouso(VOO *ponteiro, char *aeroporto){
 
 /* Define o dado Pista de Decolagem do TAD VOO. Tem como entrada um ponteiro para o TAD e
    um unsigned int para a pista. Retorna 0 se for bem sucedido. */
-int VOO_setIdentificadorPistaDecolagem(VOO *ponteiro, unsigned int identificador){
+int VOO_setIdentificadorPistaDecolagem(VOO *ponteiro, int identificador){
     ponteiro -> identificadorPistaDecolagem = identificador;
     return 0;
 }
@@ -109,7 +111,7 @@ int VOO_getIdentificadorPistaDecolagem(VOO *ponteiro){
 }
 
 void VOO_showVID(VOO *ponteiro){
-    printf("VID : %d", ponteiro->VID);
+    printf("VID : %d\n", ponteiro->VID);
 }
 void VOO_showHorarioDecolagem(VOO *ponteiro){
     horario_showHorario(&(ponteiro->horarioDecolagem));   
@@ -118,19 +120,19 @@ void VOO_showHorarioPouso(VOO *ponteiro){
     horario_showHorario(&(ponteiro->horarioPouso));   
 }
 void VOO_showAeroportoDecolagem(VOO *ponteiro){
-    printf("Aeroporto de Descolagem: %s", ponteiro->aeroportoDecolagem);
+    printf("Aeroporto de Descolagem: %s\n", ponteiro->aeroportoDecolagem);
 }
 void VOO_showAeroportoPouso(VOO *ponteiro){
-    printf("Aeroporto de Pouso: %s", ponteiro->aeroportoPouso);
+    printf("Aeroporto de Pouso: %s\n", ponteiro->aeroportoPouso);
 }
 int VOO_showIdentificadorPistaDecolagem(VOO *ponteiro){
-    printf("Identificador da Pista de Decolagem: %s", ponteiro->identificadorPistaDecolagem);
+    printf("Identificador da Pista de Decolagem: %d\n", ponteiro->identificadorPistaDecolagem);
 }
 int VOO_showVoo(VOO *ponteiro){
     VOO_showVID(ponteiro);
     VOO_showAeroportoDecolagem(ponteiro);
     VOO_showAeroportoPouso(ponteiro);
     VOO_showIdentificadorPistaDecolagem(ponteiro);
-    VOO_showHorarioDecolagem(&(ponteiro->horarioDecolagem));
-    VOO_showHorarioPouso(&(ponteiro->horarioPouso));
+    VOO_showHorarioDecolagem(ponteiro);
+    VOO_showHorarioPouso(ponteiro);
 }

@@ -85,32 +85,26 @@ int main(){
 		case 'b':
 		
 			printf("Digite o VOO nesse formato: XX:XX YY:YY AEROPORTO_DECOL AEROPORTO_POUSO IDENTIFICADOR_PIST :\n");
-			// scanf("%d:%d %d:%d %s %s %d", &swapUnsInt1, &swapUnsInt2, &swapUnsInt3, &swapUnsInt4, swapString1, swapString2, &swapUnsInt5);
+			scanf("%d:%d %d:%d %s %s %d", &swapUnsInt1, &swapUnsInt2, &swapUnsInt3, &swapUnsInt4, swapString1, swapString2, &swapUnsInt5);
 
 			printf("\n");
-
-			swapUnsInt1 = 22;
-			swapUnsInt2 = 30;
-
-			swapUnsInt3 = 12;
-			swapUnsInt4 = 35;
-
-			swapUnsInt5 = 5;
 
 			swapHorario1 = malloc(sizeof(horario));
 			horario_inicializa(swapHorario1);
 			horario_setHorario(swapHorario1, swapUnsInt1, swapUnsInt2);
 
-
 			swapHorario2 = malloc(sizeof(horario));
 			horario_inicializa(swapHorario2);
-			horario_setHorario(swapHorario1, swapUnsInt3, swapUnsInt4);
+			horario_setHorario(swapHorario2, swapUnsInt3, swapUnsInt4);
 
 			swapVoo = malloc(sizeof(VOO));
 			VOO_inicializa(swapVoo);
 
 			VOO_setHorarioDecolagem(swapVoo, swapHorario1);
 			VOO_setHorarioPouso(swapVoo, swapHorario2);
+			VOO_setAeroportoDecolagem(swapVoo, swapString1);
+			VOO_setAeroportoPouso(swapVoo, swapString2);
+			VOO_setIdentificadorPistaDecolagem(swapVoo, swapUnsInt5);
 
 			retorno = MATRIZ_VOOS_setVoo(ponteiroMatriz,swapVoo);
 
@@ -145,9 +139,9 @@ int main(){
 			break;
 		
 		case 'e':
-
-			retorno = MATRIZ_VOOS_showVoos(ponteiroMatriz);
-			printarRetorno(retorno);
+			MATRIZ_VOOS_showVoos(ponteiroMatriz);
+			//retorno = MATRIZ_VOOS_showVoos(ponteiroMatriz);
+			//printarRetorno(retorno);
 
 			break;
 		
