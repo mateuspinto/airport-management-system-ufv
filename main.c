@@ -141,8 +141,20 @@ int opcaoF(unsigned int *horaDeco, unsigned int *minDeco){
 	return retorno;
 }
 
-int opcaoG(){
-	return 0;
+int opcaoG(unsigned int *horaDeco, unsigned int *minDeco){
+	int retorno;
+	horario *swapHorario1;
+
+	// Reservando memoria para guardar horario de decolagem e usando funcoes do TAD horario pra definir hora e minuto
+	swapHorario1 = malloc(sizeof(horario));
+	horario_inicializa(swapHorario1);
+	horario_setHorario(swapHorario1, *horaDeco, *minDeco);
+
+	retorno = MATRIZ_VOOS_showVoosPouso(ponteiroMatriz, swapHorario1);
+
+	free(swapHorario1);
+
+	return retorno;
 }
 
 //Imprime todos os VOOs da matriz usando a MATRIZ_VOOS_showVoos
@@ -197,13 +209,13 @@ int main(){
 	printf("#                                       Seja-bem vindo ao xAero Airport System                         #\n");
 	printf("#                                                                                                      #\n");
 	printf("#                                                       !                                              #\n");
-    printf("#                                                       !                                              #\n");
-    printf("#                                                      /_\\                                             #\n");
-    printf("#                                               =====/` - '\\=====                                      #\n");
-    printf("#                                                   ( ( O ) )                                          #\n");
-    printf("#                            --______-------________/\\  -  /\\_______--------______--                   #\n");
-    printf("#                                 ---------____***___/`---'\\__***____--------                          #\n");
-    printf("#                                                                                                      #\n");
+  printf("#                                                       !                                              #\n");
+  printf("#                                                      /_\\                                             #\n");
+  printf("#                                               =====/` - '\\=====                                      #\n");
+  printf("#                                                   ( ( O ) )                                          #\n");
+  printf("#                            --______-------________/\\  -  /\\_______--------______--                   #\n");
+  printf("#                                 ---------____***___/`---'\\__***____--------                          #\n");
+  printf("#                                                                                                      #\n");
 	printf("########################################################################################################\n");
 
 	printf("O que voce deseja fazer?\n\n");
@@ -285,17 +297,21 @@ int main(){
 
 		case 'f':
 
-			printf("Digite o horario de decolagem no padrão XX:XX\n");
+			printf("Digite o horario de decolagem no padrao XX:XX\n");
 			scanf("%d:%d", &swapUnsInt1, &swapUnsInt2);
 			retorno = opcaoF(&swapUnsInt1, &swapUnsInt2);
 			printarRetorno(retorno);
-
 
 			break;
 
 		case 'g':
 
-			break;
+		printf("Digite o horario de pouso no padrao XX:XX\n");
+		scanf("%d:%d", &swapUnsInt1, &swapUnsInt2);
+		retorno = opcaoG(&swapUnsInt1, &swapUnsInt2);
+		printarRetorno(retorno);
+
+		break;
 
 		case 'h':
 			retorno = opcaoH();
@@ -386,26 +402,26 @@ int main(){
 							break;
 
 						case 'f':
-						//	retorno = opcaoF();
+							fscanf(arquivo, "%d:%d", &swapUnsInt1, &swapUnsInt2);
+							retorno = opcaoF(&swapUnsInt1, &swapUnsInt2);
 							printarRetorno(retorno);
 
 							break;
 
 						case 'g':
-							retorno = opcaoG();
+							fscanf(arquivo, "%d:%d", &swapUnsInt1, &swapUnsInt2);
+							retorno = opcaoG(&swapUnsInt1, &swapUnsInt2);
 							printarRetorno(retorno);
 
 							break;
 
 						case 'h':
-							retorno = opcaoH();
-							printarRetorno(retorno);
+							opcaoH();
 
 							break;
 
 						case 'i':
-							retorno = opcaoI();
-							printarRetorno(retorno);
+							opcaoI();
 
 							break;
 
