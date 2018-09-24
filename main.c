@@ -28,11 +28,12 @@ int main(){
 	MATRIZ_VOOS *ponteiroMatriz = &matriz;
 
 	char input = ' ';
-	char swapString1[30], swapString2[30];
+	char swapString1[30], swapString2[30], opcaoArquivo;
 	unsigned int swapUnsInt1, swapUnsInt2, swapUnsInt3, swapUnsInt4, swapUnsInt5;
-	VOO * swapVoo;
-	horario *swapHorario1, *swapHorario2;
+	VOO * swapVoo=NULL;
+	horario *swapHorario1=NULL, *swapHorario2=NULL;
 	int retorno = 1;
+	FILE * arquivo = NULL;
 	
 	MATRIZ_VOOS_inicializa(ponteiroMatriz);
 
@@ -51,23 +52,21 @@ int main(){
 
 	printf("O que voce deseja fazer?\n\n");
 
-	printf("a- Inicializar\n");
-	printf("b- Inserir voo\n");
-	printf("c- Remover voo\n");
-	printf("d- Procurar voo\n");
-	printf("e- Imprimir voos\n");
-	printf("f- Imprimir voos\n");
-	printf("g- Imprimir voos\n");
+	printf("a- Inicializar.\n");
+	printf("b- Inserir voo.\n");
+	printf("c- Remover voo.\n");
+	printf("d- Procurar voo.\n");
+	printf("e- Imprimir voos.\n");
+	printf("f- Imprimir voos.\n");
+	printf("g- Imprimir voos.\n");
 	printf("h- Imprimir toda a matriz\n");
 	printf("i- Encontrar faixa de horario de decolagem e previsao de pouso com maior numero de voos cadastrados.\n");
-	printf("j- Encontrar faixa de horario de decolagem e previsão de pouso com menor numero de voos cadastrados.\n");
+	printf("j- Encontrar faixa de horario de decolagem e previsao de pouso com menor numero de voos cadastrados.\n");
 	printf("k- Encontrar lista de voos mais recentemente alterada. \n");
-	printf("l- Encontrar lista de voos menos recentemente alterada\n");
-	printf("m- Verificar se matriz e esparca\n");
+	printf("l- Encontrar lista de voos menos recentemente alterada.\n");
+	printf("m- Verificar se matriz e esparca.\n");
 	printf("9- MODO ARQUIVO\n");
-	printf("0- Sair do programa\n\n");
-
-	printf("########################################################################################################\n");
+	printf("0- Sair do programa.\n\n");
 
 
 	printf("Digite alguma opcao: ");
@@ -139,9 +138,9 @@ int main(){
 			break;
 		
 		case 'e':
-			MATRIZ_VOOS_showVoos(ponteiroMatriz);
-			//retorno = MATRIZ_VOOS_showVoos(ponteiroMatriz);
-			//printarRetorno(retorno);
+
+			retorno = MATRIZ_VOOS_showVoos(ponteiroMatriz);
+			printarRetorno(retorno);
 
 			break;
 		
@@ -179,18 +178,44 @@ int main(){
 		
 		case '9':
 
+			printf("Digite o nome do arquivo e a extensao. Exemplo TESTE.txt : ");
+			scanf("%s",swapString1);
+			if((arquivo = fopen(swapString1, "r"))==NULL){
+				printf("Arquivo nao encontrado. Tente novamente mais tarde.\n");
+			} else {
+			fscanf(arquivo,"%c", &opcaoArquivo);
+			printf("%c\n", opcaoArquivo);
+
+			switch(opcaoArquivo){
+				default: 
+					break;
+			}	
+
+
+
+
+
+
+
+
+
+			fclose(arquivo);
+			}
+
 			break;
 		
 		case '0': 
+			printf("########################################################################################################\n");
+			printf("#                        Muito obrigado por usar o xAero Airport System s2                             #\n");
+			printf("########################################################################################################\n\n");
+			system("pause");
 			return 0;
 
 		default: 
-			printf("Digite novamente");
+			printf("Digite outra opcao : ");
 	}
 	
 	}
 
 	
-	system("pause");
-	return 0;
 }
