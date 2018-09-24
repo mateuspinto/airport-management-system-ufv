@@ -1,18 +1,23 @@
+//Incluindo bibliotecas padroes necessárias
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
+//Incluindo TADs auxiliares
 #include "TAD_AUXILIAR/horario.h"
-#include "TAD_AUXILIAR/lista_encadeada_random.h"
 
+//Incluindo TADs Globais
 #include "TAD/VOO.h"
 #include "TAD/LISTA_DE_VOOS.h"
 #include "TAD/ITEM_MATRIZ.h"
 #include "TAD/MATRIZ_VOOS.h"
 
+//Definindo variáveis globais para a matriz struct e um ponteiro para a matriz
+//O uso de variáveis globais é justificado aqui para poupar sintaxe e desempenho, visto que sao variavéis que nunca sofrerão
+//mudanças de endereço e etc.
 MATRIZ_VOOS matriz;
 MATRIZ_VOOS *ponteiroMatriz;
 
+//Função que imprime se o retorno das funcoes foi positivo ou negativo. Feita pra poupar retrabalho.
 void printarRetorno(int retorno){
 	if(retorno==0){
 		printf("########################################################################################################\n");
@@ -25,38 +30,61 @@ void printarRetorno(int retorno){
 	}
 }
 
-int opcaoA(){
-		int retorno;
-		retorno = MATRIZ_VOOS_inicializa(ponteiroMatriz);
-		return retorno;
+//Semelhante a primeira, porém com uma mensagem de erro diferente.
+void printarRetornoVID(int retorno){
+	if(retorno==0){
+		printf("########################################################################################################\n");
+		printf("#                                              Feito!                                                  #\n");
+		printf("########################################################################################################\n");
+	} else {
+		printf("########################################################################################################\n");
+		printf("#                                      Erro. VID nao encontrado.                                       #\n");
+		printf("########################################################################################################\n");
+	}
 }
 
-int opcaoB(int *horaDeco, int *minDeco, int *horaPouso, int *minPouso, char *aeroDeco, char *aeroPouso, int *pis){
+//Aqui foram criadas funções iguais para o MODO ARQUIVO e o interativo, para poupar re-trabalho. Nessas funcoes, sao usadas
+//as variáveis globais.
+
+//Incializa a matriz usando a função MATRIZ_VOOS_inicializa
+int opcaoA(){
+		return MATRIZ_VOOS_inicializa(ponteiroMatriz);
+}
+
+//Cria dois TADS auxiliares horários e um VOO com malloc, o aloca na matriz e libera espaço dos mallocs. A função usada foi
+//MATRIZ_VOOS_setVoo
+int opcaoB(unsigned int *horaDeco, unsigned int *minDeco, unsigned int *horaPouso, unsigned int *minPouso, char *aeroDeco, char *aeroPouso, unsigned int *pis){
+	
+	// Criando ponteiros e um int pra guardar retorno;
 	int retorno;
-	char swapString1[30], swapString2[30];
-	unsigned int swapUnsInt1, swapUnsInt2, swapUnsInt3, swapUnsInt4, swapUnsInt5;
 	VOO * swapVoo=NULL;
 	horario *swapHorario1=NULL, *swapHorario2=NULL;
 
+	// Reservando memoria para guardar horario de decolagem e usando funcoes do TAD horario pra definir hora e minuto
 	swapHorario1 = malloc(sizeof(horario));
 	horario_inicializa(swapHorario1);
 	horario_setHorario(swapHorario1, *horaDeco, *minDeco);
 
+	// Reservando memoria para guardar horario de pouso e usando funcoes do TAD horario pra definir hora e minuto
 	swapHorario2 = malloc(sizeof(horario));
 	horario_inicializa(swapHorario2);
 	horario_setHorario(swapHorario2, *horaPouso, *minPouso);
 
+	// Reservando memoria para guardar VOO para alocar.
 	swapVoo = malloc(sizeof(VOO));
 	VOO_inicializa(swapVoo);
 
+	// Definindo parametros do VOO com as funcoes feitas para tal
 	VOO_setHorarioDecolagem(swapVoo, swapHorario1);
 	VOO_setHorarioPouso(swapVoo, swapHorario2);
 	VOO_setAeroportoDecolagem(swapVoo, aeroDeco);
 	VOO_setAeroportoPouso(swapVoo, aeroPouso);
 	VOO_setIdentificadorPistaDecolagem(swapVoo, *pis);
 
+	// Guardando retorno
 	retorno = MATRIZ_VOOS_setVoo(ponteiroMatriz,swapVoo);
 
+	// Liberando memoria usada nos mallocs
 	free(swapVoo);
 	free(swapHorario1);
 	free(swapHorario2);
@@ -64,39 +92,76 @@ int opcaoB(int *horaDeco, int *minDeco, int *horaPouso, int *minPouso, char *aer
 	return retorno;
 }
 
+//Remove um VOO a partir do VID usando a MATRIZ_VOOS_delVoo
 int opcaoC(unsigned int *VID){
-	int retorno;
-	retorno = MATRIZ_VOOS_delVoo(ponteiroMatriz, VID);
-	return retorno;
+	return MATRIZ_VOOS_delVoo(ponteiroMatriz, VID);
 }
 
+//Procura um VOO a partir do VID usando a MATRIZ_VOOS_getVoo
 int opcaoD(unsigned int *VID){
-	int retorno;
-	retorno = MATRIZ_VOOS_getVoo(ponteiroMatriz, VID);
-	return retorno;
+	return MATRIZ_VOOS_getVoo(ponteiroMatriz, VID);
 }
 
 int opcaoE(){
-	int retorno;
-	retorno = MATRIZ_VOOS_showVoos(ponteiroMatriz);
-	return retorno;
+	return 0;
+}
+
+int opcaoF(){
+	return 0;
+}
+
+int opcaoG(){
+	return 0;
+}
+
+//Imprime todos os VOOs da matriz usando a MATRIZ_VOOS_showVoos
+int opcaoH(){
+	return MATRIZ_VOOS_showVoos(ponteiroMatriz);
+}
+
+int opcaoI(){
+	return 0;
+}
+
+int opcaoJ(){
+	return 0;
+}
+
+int opcaoK(){
+	return 0;
+}
+
+int opcaoL(){
+	return 0;
+}
+
+//Diz se a matriz e esparca ou nao usando a MATRIZ_VOOS_verificarMatrizEsparca
+int opcaoM(){
+	return MATRIZ_VOOS_verificarMatrizEsparca(ponteiroMatriz);
 }
 
 int main(){
 
+	//Colocando endereço da matriz global no ponteiro global
 	ponteiroMatriz = &matriz;
-	char swapString1[30], swapString2[30];
-	unsigned int swapUnsInt1, swapUnsInt2, swapUnsInt3, swapUnsInt4, swapUnsInt5;
-	VOO * swapVoo=NULL;
-	horario *swapHorario1=NULL, *swapHorario2=NULL;
 
+	//Criando algumas areas de memoria de troca para o resto do programa
+	char swapString1[30], swapString2[30], opcaoArquivo;
+	unsigned int swapUnsInt1, swapUnsInt2, swapUnsInt3, swapUnsInt4, swapUnsInt5;
+
+	//Definindo input padrao, caso a pessoa nao digite nada e criando a variavel em si
 	char input = ' ';
+
+	//Definindo retorno padrao de funcoes como erro
 	int retorno = 1;
+
+	//Criando um ponteiro para arquivo
 	FILE * arquivo = NULL;
-	char opcaoArquivo;
 	
+	//Inicializando a matriz automaticamente, caso o usuário se esqueça
 	MATRIZ_VOOS_inicializa(ponteiroMatriz);
 
+	//Printando Menu do programa
 	printf("########################################################################################################\n");
 	printf("#                                       Seja-bem vindo ao xAero Airport System                         #\n");
 	printf("#                                                                                                      #\n");
@@ -131,11 +196,16 @@ int main(){
 
 	printf("Digite alguma opcao: ");
 
+	//While eterno, até que a pessoa digite 0 para sair do programa
 	while(1){
+
+		//Escaneia o que o usuário digitar.
 		scanf("%c", &input);
 		printf("\n");
 
+		//Pega o que o usuário digitar e trata, usando memória de troca criada e as funções previamente estabelecidas.
 		switch(input){
+		
 		case 'a':
 			retorno = opcaoA();
 			printarRetorno(retorno);
@@ -189,7 +259,8 @@ int main(){
 			break;
 		
 		case 'h':
-
+			retorno = opcaoH();
+			printarRetorno(retorno);
 			break;
 		
 		case 'i':
@@ -209,24 +280,121 @@ int main(){
 			break;
 		
 		case 'm':
-
+			opcaoM();
+			
 			break;
 		
+		// O caso 9 é o MODO ARQUIVO, que lê algum arquivo e executa suas instruções
 		case '9':
 
 			printf("Digite o nome do arquivo e a extensao. Exemplo TESTE.txt : ");
+			
+			//Pega o nome do arquivo
 			scanf("%s",swapString1);
+
+			//Tratando caso em que o usuário digita o nome errado do arquivo
 			if((arquivo = fopen(swapString1, "r"))==NULL){
 				printf("Arquivo nao encontrado. Tente novamente mais tarde.\n");
-			} else {
-				while(!feof(arquivo)){
-					fscanf(arquivo,"%c", &opcaoArquivo);
-					printf("%c\n", opcaoArquivo);
 
+
+			} else {
+				//Percorrendo todo o arquivo com um while
+				while(!feof(arquivo)){
+
+					//Pegando o primeiro caractere de cada linha do arquivo e armazenando numa varíavel de area de troca
+					fscanf(arquivo,"%c", &opcaoArquivo);
+
+					//Um switch escolhe a funcao certa, e a cada caso, as informacoes da linha sao armazenadas em areas de troca e a funcao
+					//correspondente é chamada	
 					switch(opcaoArquivo){
+						
+						case 'a':
+							retorno = opcaoA();
+							printarRetorno(retorno);
+							
+							break;
+
+						case 'b':
+							fscanf(arquivo,"%d:%d %d:%d %s %s %d", &swapUnsInt1, &swapUnsInt2, &swapUnsInt3, &swapUnsInt4, swapString1, swapString2, &swapUnsInt5);							
+							retorno = opcaoB(&swapUnsInt1, &swapUnsInt2, &swapUnsInt3, &swapUnsInt4, swapString1, swapString2, &swapUnsInt5);
+							printarRetorno(retorno);
+
+							break;
+
+						case 'c':
+							swapUnsInt1=0;
+							fscanf(arquivo, "%d", &swapUnsInt1);
+							retorno = opcaoC(&swapUnsInt1);
+							printarRetornoVID(retorno);
+
+							break;
+
+						case 'd':
+
+							swapUnsInt1=0;
+							fscanf(arquivo, "%d", &swapUnsInt1);
+							retorno = opcaoD(&swapUnsInt1);
+							printarRetorno(retorno);
+
+							break;
+
+						case 'e':
+							retorno = opcaoE();
+							printarRetorno(retorno);
+
+							break;
+
+						case 'f':
+							retorno = opcaoF();
+							printarRetorno(retorno);
+
+							break;
+
+						case 'g':
+							retorno = opcaoG();
+							printarRetorno(retorno);
+
+							break;
+
+						case 'h':
+							retorno = opcaoH();
+							printarRetorno(retorno);
+
+							break;
+
+						case 'i':
+							retorno = opcaoI();
+							printarRetorno(retorno);
+
+							break;
+
+						case 'j':
+							retorno = opcaoJ();
+							printarRetorno(retorno);
+
+							break;
+
+						case 'k':
+							retorno = opcaoK();
+							printarRetorno(retorno);
+
+							break;
+
+						case 'l':
+							retorno = opcaoL();
+							printarRetorno(retorno);
+
+							break;
+
+						case 'm':
+							opcaoM();
+							break;
+
+
 						default: 
 							break;
-					}	
+					}
+
 				}
 
 
@@ -235,12 +403,13 @@ int main(){
 
 
 
-
+			//Fecha o arquivo garantindo assim que ele nao será corrompido e etc
 			fclose(arquivo);
 			}
 
 			break;
 		
+		//O caso 0 engloba o que acontece quando o usário pede pra sair do programa
 		case '0': 
 			printf("########################################################################################################\n");
 			printf("#                        Muito obrigado por usar o xAero Airport System s2                             #\n");

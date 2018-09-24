@@ -101,7 +101,6 @@ int MATRIZ_VOOS_showVoos(MATRIZ_VOOS *ponteiro){
                 ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[i][j].item.primeiroPtr;
                 do{
                     swapListaDeVoos=swapListaDeVoos->proximo;
-                    printf("teste");
                     VOO_showVoo(&(swapListaDeVoos->item));
                     printf("----------------------------------------------------\n");
                 }while(swapListaDeVoos->proximo!=NULL);
@@ -180,9 +179,14 @@ int MATRIZ_VOOS_verificarMatrizEsparca(MATRIZ_VOOS *ponteiro){
         }
     }
     if(celulasVazia>=(celulasPreenchidas*2)){
-        printf("A Matriz é esparça!");
+        printf("");
+        printf("########################################################################################################\n");
+		printf("#                                          A Matriz e esparca!                                         #\n");
+		printf("########################################################################################################\n");
     }else{
-        printf("A Matriz não é esparça!");
+        printf("########################################################################################################\n");
+		printf("#                                        A Matriz nao e esparca!                                       #\n");
+		printf("########################################################################################################\n");
     }
     
     return 0;

@@ -2,6 +2,7 @@
 #include "VOO.h"
 #include <time.h>
 
+int randomizer = 0;
 /* Limpa a memória para um TAD. Tem como entrada um ponteiro para o TAD e
    retorna 0 se for bem sucedido */
 int VOO_inicializa(VOO *ponteiro){
@@ -14,7 +15,8 @@ int VOO_inicializa(VOO *ponteiro){
     ponteiro -> identificadorPistaDecolagem = 0;
 
     srand(time(NULL));
-    ponteiro -> VID = (rand() % 10000);
+    ponteiro -> VID = (rand() % 10000) + randomizer*randomizer;
+    randomizer++;
 
     printf("########################################################################################################\n");
     printf("#                                             VID %d                                                 #\n", ponteiro -> VID);
