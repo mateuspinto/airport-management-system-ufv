@@ -19,3 +19,4 @@ int MATRIZ_VOOS_showHorarioMaisVoos(MATRIZ_VOOS *ponteiro);
 int MATRIZ_VOOS_showHorarioMenosVoos(MATRIZ_VOOS *ponteiro);
 int MATRIZ_VOOS_showListaAlteracaoMaisRecente(MATRIZ_VOOS *ponteiro);
 int MATRIZ_VOOS_verificarMatrizEsparca(MATRIZ_VOOS *ponteiro);
+int MATRIZ_VOOS_salvarMatriz(MATRIZ_VOOS *ponteiro, FILE *salvar);

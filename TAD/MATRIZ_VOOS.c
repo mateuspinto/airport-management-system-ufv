@@ -203,3 +203,28 @@ int MATRIZ_VOOS_verificarMatrizEsparca(MATRIZ_VOOS *ponteiro){
 
     return 0;
 }
+int MATRIZ_VOOS_salvarMatriz(MATRIZ_VOOS *ponteiro, FILE *salvar){
+  unsigned int vid, horaDeco, minDeco, horaPouso, minPouso, pista;
+  char aeroDeco[30], aeroPouso[30];
+  fprintf(salvar, "a\n");
+  for(int i=0; i<24; i++){
+      for(int j=0; j<24; j++){
+          if(ponteiro->item_matriz[i][j].item.numItens>0){
+              ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[i][j].item.primeiroPtr;
+              do{
+                  swapListaDeVoos=swapListaDeVoos->proximo;
+                  vid = VOO_getVID(&(swapListaDeVoos->item));
+                  VOO_getAeroportoDecolagem(&(swapListaDeVoos->item), aeroDeco);
+                  VOO_getAeroportoPouso(&(swapListaDeVoos->item), aeroPouso);
+                  horaDeco = (swapListaDeVoos->item).horarioDecolagem.hora;
+                  minDeco = (swapListaDeVoos->item).horarioDecolagem.min;
+                  horaPouso = (swapListaDeVoos->item).horarioPouso.hora;
+                  minPouso = (swapListaDeVoos->item).horarioPouso.min;
+                  pista = VOO_getIdentificadorPistaDecolagem(&(swapListaDeVoos->item));
+                  fprintf(salvar, "b %d:%d %d:%d %s %s %d\n", horaDeco, minDeco, horaPouso, minPouso, aeroDeco, aeroPouso, pista);
+                  } while(swapListaDeVoos->proximo!=NULL);
+          }
+      }
+  }
+  return 0;
+}

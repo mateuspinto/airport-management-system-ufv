@@ -4,6 +4,7 @@ definidos */
 #define VOO_H_INCLUDED
 
 // Incluindo bibliotecas necessárias e/ou TADs auxiliares.
+#include <stdio.h>
 #include <stdlib.h>
 #include "../TAD_AUXILIAR/horario.h"
 
