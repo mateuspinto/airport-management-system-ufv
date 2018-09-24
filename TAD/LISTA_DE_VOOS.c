@@ -23,6 +23,8 @@ int LISTA_DE_VOOS_insereVoo(LISTA_DE_VOOS *lista, VOO *itemInserido){
   (*itemVoo).proximo=(*itemLista).proximo;
   (*itemLista).proximo=itemVoo;
 
+  lista -> numItens += 1;
+
   return 0;
 }
 

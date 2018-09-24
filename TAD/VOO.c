@@ -112,24 +112,37 @@ int VOO_getIdentificadorPistaDecolagem(VOO *ponteiro){
     return ponteiro -> identificadorPistaDecolagem;
 }
 
+// Printa o VID de um VOO dado endereco dele
 void VOO_showVID(VOO *ponteiro){
     printf("VID : %d\n", ponteiro->VID);
 }
+
+// Printa o horario de decolagem de um VOO dado endereco dele
 void VOO_showHorarioDecolagem(VOO *ponteiro){
     horario_showHorario(&(ponteiro->horarioDecolagem));   
 }
+
+// Printa o horario de pouso de um VOO dado endereco dele
 void VOO_showHorarioPouso(VOO *ponteiro){
     horario_showHorario(&(ponteiro->horarioPouso));   
 }
+
+// Printa o aeroporto de decolagem de um VOO dado endereco dele
 void VOO_showAeroportoDecolagem(VOO *ponteiro){
     printf("Aeroporto de Descolagem: %s\n", ponteiro->aeroportoDecolagem);
 }
+
+// Printa o aeroporto de pouso de um VOO dado endereco dele
 void VOO_showAeroportoPouso(VOO *ponteiro){
     printf("Aeroporto de Pouso: %s\n", ponteiro->aeroportoPouso);
 }
+
+// Printa o identificador de pista de decolagem de um VOO dado endereco dele
 int VOO_showIdentificadorPistaDecolagem(VOO *ponteiro){
     printf("Identificador da Pista de Decolagem: %d\n", ponteiro->identificadorPistaDecolagem);
 }
+
+// Printa todas as informacoes de um VOO dado endereco dele usando as funcoes passadas
 int VOO_showVoo(VOO *ponteiro){
     VOO_showVID(ponteiro);
     VOO_showAeroportoDecolagem(ponteiro);

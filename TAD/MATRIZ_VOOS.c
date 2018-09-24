@@ -1,3 +1,4 @@
+// Incluindo header do TAD e/ou bibliotecas necessárias
 #include "ITEM_MATRIZ.h"
 #include "MATRIZ_VOOS.h"
 #include "VOO.h"
@@ -6,6 +7,7 @@
 #include <stdio.h>
 #include "../TAD_AUXILIAR/horario.h"
 
+//Inicializa a matriz de voos
 int MATRIZ_VOOS_inicializa(MATRIZ_VOOS *ponteiro){
     for(int i=0; i<24; i++){
         for(int j=0; j<24; j++){
@@ -17,12 +19,18 @@ int MATRIZ_VOOS_inicializa(MATRIZ_VOOS *ponteiro){
 
     return 0;
 }
+
+//Insere e printa um voo na matriz dado endereco da matriz e do voo
 int MATRIZ_VOOS_setVoo(MATRIZ_VOOS *ponteiro, VOO *voo){
     VOO_showVoo(voo);
     ponteiro->item_matriz[voo->horarioDecolagem.hora][voo->horarioPouso.hora].item.numItens+=1;
+    ponteiro->item_matriz[voo->horarioDecolagem.hora][voo->horarioPouso.hora].numVoos+=1;
+    ponteiro->totalVoos+=1;
     LISTA_DE_VOOS_insereVoo(&(ponteiro->item_matriz[voo->horarioDecolagem.hora][voo->horarioPouso.hora].item), voo);
     return 0;
 }
+
+//Remove um voo na matriz dado endereco da matriz e do voo
 int MATRIZ_VOOS_delVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
     for(int i=0; i<24; i++){
         for(int j=0; j<24; j++){
@@ -36,26 +44,21 @@ int MATRIZ_VOOS_delVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
     }
     return 1;
 }
+
+//Printa um VOO dado endereco da matriz e o endereco do VID dele
 int MATRIZ_VOOS_getVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
     printf("----------------------------------------------------\n");
     for(int i=0; i<24; i++){
         for(int j=0; j<24; j++){
             if(ponteiro->item_matriz[i][j].item.numItens>0){
                 ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showVoo(&(ponteiro->item_matriz[i][j]), *VID);
-                // ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[i][j].item.primeiroPtr;
-                // do{
-                //     swapListaDeVoos=swapListaDeVoos->proximo;
-                //     if(swapListaDeVoos->item.VID==*VID){
-                //         VOO_showVoo(&(swapListaDeVoos->item));
-                //     }
-                //     printf("----------------------------------------------------\n");
-                // }while(swapListaDeVoos->proximo!=NULL);
             }
         }
     }
     return 0;
 }
 
+//Printa VOOs dado o endereco da matriz e o endereco de um horario de decolagem e de pouso deles
 int MATRIZ_VOOS_showVoosDecolagemPouso(MATRIZ_VOOS *ponteiro, horario *decolagem, horario *pouso){
     printf("----------------------------------------------------\n");
     if(ponteiro->item_matriz[decolagem->hora][pouso->hora].item.numItens>0){
@@ -69,6 +72,7 @@ int MATRIZ_VOOS_showVoosDecolagemPouso(MATRIZ_VOOS *ponteiro, horario *decolagem
     return 0;
 }
 
+//Printa VOOs dado o endereco da matriz e o endereco de um horario de decolagem
 int MATRIZ_VOOS_showVoosDecolagem(MATRIZ_VOOS *ponteiro, horario *decolagem){
     for(int i=0; i<24; i++){
         ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[decolagem->hora][i].item.primeiroPtr;
@@ -81,6 +85,8 @@ int MATRIZ_VOOS_showVoosDecolagem(MATRIZ_VOOS *ponteiro, horario *decolagem){
     }
     return 0;
 }
+
+//Printa VOOs dado o endereco da matriz e o endereco de um horario de pouso deles
 int MATRIZ_VOOS_showVoosPouso(MATRIZ_VOOS *ponteiro, horario *pouso){
     printf("----------------------------------------------------");
     for(int i=0; i<24; i++){
@@ -93,6 +99,8 @@ int MATRIZ_VOOS_showVoosPouso(MATRIZ_VOOS *ponteiro, horario *pouso){
     }
     return 0;
 }
+
+//Printa todos os VOOS da matriz
 int MATRIZ_VOOS_showVoos(MATRIZ_VOOS *ponteiro){
     printf("----------------------------------------------------\n");
     for(int i=0; i<24; i++){
@@ -109,10 +117,12 @@ int MATRIZ_VOOS_showVoos(MATRIZ_VOOS *ponteiro){
     }
     return 0;
 }
+
+//Printa o horario com o maior numero de VOOs
 int MATRIZ_VOOS_showHorarioMaisVoos(MATRIZ_VOOS *ponteiro){
     int m=0;
     int n=0;
-    int maiorNumero=0;
+    int maiorNumero=ponteiro->item_matriz[0][0].numVoos;
     for(int i=0; i<24; i++){
         for(int j=0; j<24; j++){
             if(ponteiro->item_matriz[i][j].numVoos>maiorNumero){
@@ -122,16 +132,16 @@ int MATRIZ_VOOS_showHorarioMaisVoos(MATRIZ_VOOS *ponteiro){
             }
         }
     }
-    printf("Linha: %d\n:", m);
-    printf("Coluna: %d\n:", n);
-    printf("Quantidade de voos: %d\n:", maiorNumero);
+    printf("\nLinha: %d\n", m);
+    printf("Coluna: %d\n", n);
+    printf("Quantidade de voos: %d\n", maiorNumero);
     return 0;
 }
 
 int MATRIZ_VOOS_showHorarioMenosVoos(MATRIZ_VOOS *ponteiro){
     int m=0;
     int n=0;
-    int menorNumero=0;
+    int menorNumero=ponteiro->item_matriz[0][0].numVoos;
     for(int i=0; i<24; i++){
         for(int j=0; j<24; j++){
             if(ponteiro->item_matriz[i][j].numVoos<menorNumero){
@@ -141,9 +151,9 @@ int MATRIZ_VOOS_showHorarioMenosVoos(MATRIZ_VOOS *ponteiro){
             }
         }
     }
-    printf("Linha: %d\n:", m);
-    printf("Coluna: %d\n:", n);
-    printf("Quantidade de voos: %d\n:", menorNumero);
+    printf("\nLinha: %d\n", m);
+    printf("Coluna: %d\n", n);
+    printf("Quantidade de voos: %d\n", menorNumero);
     return 0;
 }
 

@@ -16,7 +16,7 @@ int ITEM_MATRIZ_inicializa(ITEM_MATRIZ *ponteiro){
 //Define os valores do TAD ITEM_MATRIZ
 int ITEM_MATRIZ_setItemMatriz(ITEM_MATRIZ *ponteiro, LISTA_DE_VOOS *item, horario *ultimaAtualizacao){
     ponteiro->item=*item;
-    ponteiro->numVoos=item->numItens;
+    ponteiro->numVoos+=item->numItens;
     ponteiro->ultimaAtualizacao=*ultimaAtualizacao;
     
     return 0;

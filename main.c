@@ -120,11 +120,11 @@ int opcaoH(){
 }
 
 int opcaoI(){
-	return 0;
+	return MATRIZ_VOOS_showHorarioMaisVoos(ponteiroMatriz);
 }
 
 int opcaoJ(){
-	return 0;
+	return MATRIZ_VOOS_showHorarioMenosVoos(ponteiroMatriz);
 }
 
 int opcaoK(){
@@ -264,11 +264,11 @@ int main(){
 			break;
 		
 		case 'i':
-
+			opcaoI();
 			break;
 		
 		case 'j':
-
+			opcaoJ();
 			break;
 		
 		case 'k':
