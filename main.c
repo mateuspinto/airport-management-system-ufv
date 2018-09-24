@@ -54,7 +54,7 @@ int opcaoA(){
 //Cria dois TADS auxiliares horários e um VOO com malloc, o aloca na matriz e libera espaço dos mallocs. A função usada foi
 //MATRIZ_VOOS_setVoo
 int opcaoB(unsigned int *horaDeco, unsigned int *minDeco, unsigned int *horaPouso, unsigned int *minPouso, char *aeroDeco, char *aeroPouso, unsigned int *pis){
-	
+
 	// Criando ponteiros e um int pra guardar retorno;
 	int retorno;
 	VOO * swapVoo=NULL;
@@ -102,12 +102,43 @@ int opcaoD(unsigned int *VID){
 	return MATRIZ_VOOS_getVoo(ponteiroMatriz, VID);
 }
 
-int opcaoE(){
-	return 0;
+int opcaoE(unsigned int *horaDeco, unsigned int *minDeco, unsigned int *horaPouso, unsigned int *minPouso){
+	int retorno;
+	horario *swapHorario1, *swapHorario2;
+
+	// Reservando memoria para guardar horario de decolagem e usando funcoes do TAD horario pra definir hora e minuto
+	swapHorario1 = malloc(sizeof(horario));
+	horario_inicializa(swapHorario1);
+	horario_setHorario(swapHorario1, *horaDeco, *minDeco);
+
+	// Reservando memoria para guardar horario de pouso e usando funcoes do TAD horario pra definir hora e minuto
+	swapHorario2 = malloc(sizeof(horario));
+	horario_inicializa(swapHorario2);
+	horario_setHorario(swapHorario2, *horaPouso, *minPouso);
+
+
+	retorno = MATRIZ_VOOS_showVoosDecolagemPouso(ponteiroMatriz, swapHorario1, swapHorario2);
+
+	free(swapHorario1);
+	free(swapHorario2);
+
+	return retorno;
 }
 
-int opcaoF(){
-	return 0;
+int opcaoF(unsigned int *horaDeco, unsigned int *minDeco){
+	int retorno;
+	horario *swapHorario1;
+
+	// Reservando memoria para guardar horario de decolagem e usando funcoes do TAD horario pra definir hora e minuto
+	swapHorario1 = malloc(sizeof(horario));
+	horario_inicializa(swapHorario1);
+	horario_setHorario(swapHorario1, *horaDeco, *minDeco);
+
+	retorno = MATRIZ_VOOS_showVoosDecolagem(ponteiroMatriz, swapHorario1);
+
+	free(swapHorario1);
+
+	return retorno;
 }
 
 int opcaoG(){
@@ -157,7 +188,7 @@ int main(){
 
 	//Criando um ponteiro para arquivo
 	FILE * arquivo = NULL;
-	
+
 	//Inicializando a matriz automaticamente, caso o usuário se esqueça
 	MATRIZ_VOOS_inicializa(ponteiroMatriz);
 
@@ -165,7 +196,7 @@ int main(){
 	printf("########################################################################################################\n");
 	printf("#                                       Seja-bem vindo ao xAero Airport System                         #\n");
 	printf("#                                                                                                      #\n");
-	printf("#                                                       !                                              #\n");                     
+	printf("#                                                       !                                              #\n");
     printf("#                                                       !                                              #\n");
     printf("#                                                      /_\\                                             #\n");
     printf("#                                               =====/` - '\\=====                                      #\n");
@@ -205,22 +236,22 @@ int main(){
 
 		//Pega o que o usuário digitar e trata, usando memória de troca criada e as funções previamente estabelecidas.
 		switch(input){
-		
+
 		case 'a':
 			retorno = opcaoA();
 			printarRetorno(retorno);
 			break;
 
 		case 'b':
-		
+
 			printf("Digite o VOO nesse formato: XX:XX YY:YY AEROPORTO_DECOL AEROPORTO_POUSO IDENTIFICADOR_PIST :\n");
 			scanf("%d:%d %d:%d %s %s %d", &swapUnsInt1, &swapUnsInt2, &swapUnsInt3, &swapUnsInt4, swapString1, swapString2, &swapUnsInt5);
-	
+
 			retorno = opcaoB(&swapUnsInt1, &swapUnsInt2, &swapUnsInt3, &swapUnsInt4, swapString1, swapString2, &swapUnsInt5);
 			printarRetorno(retorno);
 
 			break;
-		
+
 		case 'c':
 
 			printf("Digite um VID: ");
@@ -231,7 +262,7 @@ int main(){
 
 			printarRetorno(retorno);
 			break;
-		
+
 		case 'd':
 
 			printf("Digite um VID: ");
@@ -240,55 +271,63 @@ int main(){
 
 			retorno = opcaoD(&swapUnsInt1);
 			printarRetorno(retorno);
-			
+
 			break;
-		
+
 		case 'e':
 
-			retorno = opcaoE();
+			printf("Digite o horario de decolagem e de pouso no padrão XX:XX YY:YY\n");
+			scanf("%d:%d %d:%d", &swapUnsInt1, &swapUnsInt2, &swapUnsInt3, &swapUnsInt4);
+			retorno = opcaoE(&swapUnsInt1, &swapUnsInt2, &swapUnsInt3, &swapUnsInt4);
 			printarRetorno(retorno);
 
 			break;
-		
+
 		case 'f':
 
+			printf("Digite o horario de decolagem no padrão XX:XX\n");
+			scanf("%d:%d", &swapUnsInt1, &swapUnsInt2);
+			retorno = opcaoF(&swapUnsInt1, &swapUnsInt2);
+			printarRetorno(retorno);
+
+
 			break;
-		
+
 		case 'g':
 
 			break;
-		
+
 		case 'h':
 			retorno = opcaoH();
 			printarRetorno(retorno);
 			break;
-		
+
 		case 'i':
 			opcaoI();
 			break;
-		
+
 		case 'j':
 			opcaoJ();
 			break;
-		
+
 		case 'k':
 
 			break;
-		
+
 		case 'l':
 
 			break;
-		
+
 		case 'm':
 			opcaoM();
-			
+
 			break;
-		
+
 		// O caso 9 é o MODO ARQUIVO, que lê algum arquivo e executa suas instruções
 		case '9':
 
 			printf("Digite o nome do arquivo e a extensao. Exemplo TESTE.txt : ");
-			
+
 			//Pega o nome do arquivo
 			scanf("%s",swapString1);
 
@@ -305,17 +344,17 @@ int main(){
 					fscanf(arquivo,"%c", &opcaoArquivo);
 
 					//Um switch escolhe a funcao certa, e a cada caso, as informacoes da linha sao armazenadas em areas de troca e a funcao
-					//correspondente é chamada	
+					//correspondente é chamada
 					switch(opcaoArquivo){
-						
+
 						case 'a':
 							retorno = opcaoA();
 							printarRetorno(retorno);
-							
+
 							break;
 
 						case 'b':
-							fscanf(arquivo,"%d:%d %d:%d %s %s %d", &swapUnsInt1, &swapUnsInt2, &swapUnsInt3, &swapUnsInt4, swapString1, swapString2, &swapUnsInt5);							
+							fscanf(arquivo,"%d:%d %d:%d %s %s %d", &swapUnsInt1, &swapUnsInt2, &swapUnsInt3, &swapUnsInt4, swapString1, swapString2, &swapUnsInt5);
 							retorno = opcaoB(&swapUnsInt1, &swapUnsInt2, &swapUnsInt3, &swapUnsInt4, swapString1, swapString2, &swapUnsInt5);
 							printarRetorno(retorno);
 
@@ -339,13 +378,15 @@ int main(){
 							break;
 
 						case 'e':
-							retorno = opcaoE();
+
+							fscanf(arquivo, "%d:%d %d:%d", &swapUnsInt1, &swapUnsInt2, &swapUnsInt3, &swapUnsInt4);
+							retorno = opcaoE(&swapUnsInt1, &swapUnsInt2, &swapUnsInt3, &swapUnsInt4);
 							printarRetorno(retorno);
 
 							break;
 
 						case 'f':
-							retorno = opcaoF();
+						//	retorno = opcaoF();
 							printarRetorno(retorno);
 
 							break;
@@ -391,7 +432,7 @@ int main(){
 							break;
 
 
-						default: 
+						default:
 							break;
 					}
 
@@ -408,20 +449,20 @@ int main(){
 			}
 
 			break;
-		
+
 		//O caso 0 engloba o que acontece quando o usário pede pra sair do programa
-		case '0': 
+		case '0':
 			printf("########################################################################################################\n");
 			printf("#                        Muito obrigado por usar o xAero Airport System s2                             #\n");
 			printf("########################################################################################################\n\n");
 			system("pause");
 			return 0;
 
-		default: 
+		default:
 			printf("Digite outra opcao : ");
 	}
-	
+
 	}
 
-	
+
 }

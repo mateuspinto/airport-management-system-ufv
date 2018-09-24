@@ -119,12 +119,14 @@ void VOO_showVID(VOO *ponteiro){
 
 // Printa o horario de decolagem de um VOO dado endereco dele
 void VOO_showHorarioDecolagem(VOO *ponteiro){
-    horario_showHorario(&(ponteiro->horarioDecolagem));   
+    printf("Decolagem - ");
+    horario_showHorario(&(ponteiro->horarioDecolagem));
 }
 
 // Printa o horario de pouso de um VOO dado endereco dele
 void VOO_showHorarioPouso(VOO *ponteiro){
-    horario_showHorario(&(ponteiro->horarioPouso));   
+  printf("Pouso - ");
+    horario_showHorario(&(ponteiro->horarioPouso));
 }
 
 // Printa o aeroporto de decolagem de um VOO dado endereco dele

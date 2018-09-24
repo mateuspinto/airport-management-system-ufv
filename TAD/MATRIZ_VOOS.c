@@ -74,27 +74,30 @@ int MATRIZ_VOOS_showVoosDecolagemPouso(MATRIZ_VOOS *ponteiro, horario *decolagem
 
 //Printa VOOs dado o endereco da matriz e o endereco de um horario de decolagem
 int MATRIZ_VOOS_showVoosDecolagem(MATRIZ_VOOS *ponteiro, horario *decolagem){
-    for(int i=0; i<24; i++){
+  for(int i=0; i<24; i++){
+      if(ponteiro->item_matriz[decolagem->hora][i].numVoos>0){
         ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[decolagem->hora][i].item.primeiroPtr;
-        printf("----------------------------------------------------");
-        while(swapListaDeVoos->proximo!=NULL){
-            VOO_showVoo(&(swapListaDeVoos->item));
-            printf("----------------------------------------------------");
+        do{
             swapListaDeVoos=swapListaDeVoos->proximo;
-        }
-    }
-    return 0;
+            VOO_showVoo(&(swapListaDeVoos->item));
+            printf("----------------------------------------------------\n");
+        }while(swapListaDeVoos->proximo!=NULL);
+      }
+  }
+  return 0;
 }
 
 //Printa VOOs dado o endereco da matriz e o endereco de um horario de pouso deles
 int MATRIZ_VOOS_showVoosPouso(MATRIZ_VOOS *ponteiro, horario *pouso){
     printf("----------------------------------------------------");
     for(int i=0; i<24; i++){
-        ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[i][pouso->hora].item.primeiroPtr;
-        while(swapListaDeVoos->proximo!=NULL){
-            VOO_showVoo(&(swapListaDeVoos->item));
-            printf("----------------------------------------------------");
-            swapListaDeVoos=swapListaDeVoos->proximo;
+        if(ponteiro->item_matriz[i][pouso->hora].numVoos>0){
+          ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[i][pouso->hora].item.primeiroPtr;
+          do{
+              swapListaDeVoos=swapListaDeVoos->proximo;
+              VOO_showVoo(&(swapListaDeVoos->item));
+              printf("----------------------------------------------------");
+          }while(swapListaDeVoos->proximo!=NULL);
         }
     }
     return 0;
@@ -198,6 +201,6 @@ int MATRIZ_VOOS_verificarMatrizEsparca(MATRIZ_VOOS *ponteiro){
 		printf("#                                        A Matriz nao e esparca!                                       #\n");
 		printf("########################################################################################################\n");
     }
-    
+
     return 0;
 }
