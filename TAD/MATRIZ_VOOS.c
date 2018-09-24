@@ -40,14 +40,15 @@ int MATRIZ_VOOS_getVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
     for(int i=0; i<24; i++){
         for(int j=0; j<24; j++){
             if(ponteiro->item_matriz[i][j].item.numItens>0){
-                ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[i][j].item.primeiroPtr;
-                do{
-                    swapListaDeVoos=swapListaDeVoos->proximo;
-                    if(swapListaDeVoos->item.VID==*VID){
-                        VOO_showVoo(&(swapListaDeVoos->item));
-                    }
-                    printf("----------------------------------------------------\n");
-                }while(swapListaDeVoos->proximo!=NULL);
+                ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showVoo(&(ponteiro->item_matriz[i][j]), *VID);
+                // ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[i][j].item.primeiroPtr;
+                // do{
+                //     swapListaDeVoos=swapListaDeVoos->proximo;
+                //     if(swapListaDeVoos->item.VID==*VID){
+                //         VOO_showVoo(&(swapListaDeVoos->item));
+                //     }
+                //     printf("----------------------------------------------------\n");
+                // }while(swapListaDeVoos->proximo!=NULL);
             }
         }
     }
@@ -55,15 +56,18 @@ int MATRIZ_VOOS_getVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
 }
 
 int MATRIZ_VOOS_showVoosDecolagemPouso(MATRIZ_VOOS *ponteiro, horario *decolagem, horario *pouso){
-    ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[decolagem->hora][pouso->hora].item.primeiroPtr;
-    printf("----------------------------------------------------");
-    while(swapListaDeVoos->proximo!=NULL){
-        VOO_showVoo(&(swapListaDeVoos->item));
-        printf("----------------------------------------------------");
-        swapListaDeVoos=swapListaDeVoos->proximo;
+    printf("----------------------------------------------------\n");
+    if(ponteiro->item_matriz[decolagem->hora][pouso->hora].item.numItens>0){
+        ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[decolagem->hora][pouso->hora].item.primeiroPtr;
+        do{
+            swapListaDeVoos=swapListaDeVoos->proximo;
+            VOO_showVoo(&(swapListaDeVoos->item));
+            printf("----------------------------------------------------\n");
+        }while(swapListaDeVoos->proximo!=NULL);
     }
     return 0;
 }
+
 int MATRIZ_VOOS_showVoosDecolagem(MATRIZ_VOOS *ponteiro, horario *decolagem){
     for(int i=0; i<24; i++){
         ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[decolagem->hora][i].item.primeiroPtr;

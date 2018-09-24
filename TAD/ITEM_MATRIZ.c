@@ -173,12 +173,12 @@ void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showIdentificadorPistaDecolagem(ITEM_MATRIZ *
 }
 
 void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showVoo(ITEM_MATRIZ *ponteiro, unsigned int vid){
-    ITEM_LISTA_DE_VOOS *swapItemListaVoos=ponteiro->item.primeiroPtr;
+    ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item.primeiroPtr;
     do{
-        swapItemListaVoos=swapItemListaVoos->proximo;
-    }while(swapItemListaVoos->proximo!=NULL && swapItemListaVoos->item.VID!=vid);
-
-    if(swapItemListaVoos->item.VID==vid){
-        VOO_showVoo(&(swapItemListaVoos->item));
-    }
+        swapListaDeVoos=swapListaDeVoos->proximo;
+        if(swapListaDeVoos->item.VID==vid){
+            VOO_showVoo(&(swapListaDeVoos->item));
+        }
+        printf("----------------------------------------------------\n");
+    }while(swapListaDeVoos->proximo!=NULL);
 }
