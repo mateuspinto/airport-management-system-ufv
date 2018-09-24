@@ -10,6 +10,9 @@
 #include "TAD/ITEM_MATRIZ.h"
 #include "TAD/MATRIZ_VOOS.h"
 
+MATRIZ_VOOS matriz;
+MATRIZ_VOOS *ponteiroMatriz;
+
 void printarRetorno(int retorno){
 	if(retorno==0){
 		printf("########################################################################################################\n");
@@ -22,18 +25,75 @@ void printarRetorno(int retorno){
 	}
 }
 
-int main(){
+int opcaoA(){
+		int retorno;
+		retorno = MATRIZ_VOOS_inicializa(ponteiroMatriz);
+		return retorno;
+}
 
-	MATRIZ_VOOS matriz;
-	MATRIZ_VOOS *ponteiroMatriz = &matriz;
-
-	char input = ' ';
-	char swapString1[30], swapString2[30], opcaoArquivo;
+int opcaoB(int *horaDeco, int *minDeco, int *horaPouso, int *minPouso, char *aeroDeco, char *aeroPouso, int *pis){
+	int retorno;
+	char swapString1[30], swapString2[30];
 	unsigned int swapUnsInt1, swapUnsInt2, swapUnsInt3, swapUnsInt4, swapUnsInt5;
 	VOO * swapVoo=NULL;
 	horario *swapHorario1=NULL, *swapHorario2=NULL;
+
+	swapHorario1 = malloc(sizeof(horario));
+	horario_inicializa(swapHorario1);
+	horario_setHorario(swapHorario1, *horaDeco, *minDeco);
+
+	swapHorario2 = malloc(sizeof(horario));
+	horario_inicializa(swapHorario2);
+	horario_setHorario(swapHorario2, *horaPouso, *minPouso);
+
+	swapVoo = malloc(sizeof(VOO));
+	VOO_inicializa(swapVoo);
+
+	VOO_setHorarioDecolagem(swapVoo, swapHorario1);
+	VOO_setHorarioPouso(swapVoo, swapHorario2);
+	VOO_setAeroportoDecolagem(swapVoo, aeroDeco);
+	VOO_setAeroportoPouso(swapVoo, aeroPouso);
+	VOO_setIdentificadorPistaDecolagem(swapVoo, *pis);
+
+	retorno = MATRIZ_VOOS_setVoo(ponteiroMatriz,swapVoo);
+
+	free(swapVoo);
+	free(swapHorario1);
+	free(swapHorario2);
+
+	return retorno;
+}
+
+int opcaoC(unsigned int *VID){
+	int retorno;
+	retorno = MATRIZ_VOOS_delVoo(ponteiroMatriz, VID);
+	return retorno;
+}
+
+int opcaoD(unsigned int *VID){
+	int retorno;
+	retorno = MATRIZ_VOOS_getVoo(ponteiroMatriz, VID);
+	return retorno;
+}
+
+int opcaoE(){
+	int retorno;
+	retorno = MATRIZ_VOOS_showVoos(ponteiroMatriz);
+	return retorno;
+}
+
+int main(){
+
+	ponteiroMatriz = &matriz;
+	char swapString1[30], swapString2[30];
+	unsigned int swapUnsInt1, swapUnsInt2, swapUnsInt3, swapUnsInt4, swapUnsInt5;
+	VOO * swapVoo=NULL;
+	horario *swapHorario1=NULL, *swapHorario2=NULL;
+
+	char input = ' ';
 	int retorno = 1;
 	FILE * arquivo = NULL;
+	char opcaoArquivo;
 	
 	MATRIZ_VOOS_inicializa(ponteiroMatriz);
 
@@ -77,7 +137,7 @@ int main(){
 
 		switch(input){
 		case 'a':
-			retorno = MATRIZ_VOOS_inicializa(ponteiroMatriz);
+			retorno = opcaoA();
 			printarRetorno(retorno);
 			break;
 
@@ -85,32 +145,8 @@ int main(){
 		
 			printf("Digite o VOO nesse formato: XX:XX YY:YY AEROPORTO_DECOL AEROPORTO_POUSO IDENTIFICADOR_PIST :\n");
 			scanf("%d:%d %d:%d %s %s %d", &swapUnsInt1, &swapUnsInt2, &swapUnsInt3, &swapUnsInt4, swapString1, swapString2, &swapUnsInt5);
-
-			printf("\n");
-
-			swapHorario1 = malloc(sizeof(horario));
-			horario_inicializa(swapHorario1);
-			horario_setHorario(swapHorario1, swapUnsInt1, swapUnsInt2);
-
-			swapHorario2 = malloc(sizeof(horario));
-			horario_inicializa(swapHorario2);
-			horario_setHorario(swapHorario2, swapUnsInt3, swapUnsInt4);
-
-			swapVoo = malloc(sizeof(VOO));
-			VOO_inicializa(swapVoo);
-
-			VOO_setHorarioDecolagem(swapVoo, swapHorario1);
-			VOO_setHorarioPouso(swapVoo, swapHorario2);
-			VOO_setAeroportoDecolagem(swapVoo, swapString1);
-			VOO_setAeroportoPouso(swapVoo, swapString2);
-			VOO_setIdentificadorPistaDecolagem(swapVoo, swapUnsInt5);
-
-			retorno = MATRIZ_VOOS_setVoo(ponteiroMatriz,swapVoo);
-
-			free(swapVoo);
-			free(swapHorario1);
-			free(swapHorario2);
-
+	
+			retorno = opcaoB(&swapUnsInt1, &swapUnsInt2, &swapUnsInt3, &swapUnsInt4, swapString1, swapString2, &swapUnsInt5);
 			printarRetorno(retorno);
 
 			break;
@@ -121,7 +157,7 @@ int main(){
 			swapUnsInt1=0;
 			scanf("%d", &swapUnsInt1);
 
-			retorno = MATRIZ_VOOS_delVoo(ponteiroMatriz, &swapUnsInt1);
+			retorno = opcaoC(&swapUnsInt1);
 
 			printarRetorno(retorno);
 			break;
@@ -132,14 +168,14 @@ int main(){
 			swapUnsInt1=0;
 			scanf("%d", &swapUnsInt1);
 
-			retorno = MATRIZ_VOOS_getVoo(ponteiroMatriz, &swapUnsInt1);
+			retorno = opcaoD(&swapUnsInt1);
 			printarRetorno(retorno);
 			
 			break;
 		
 		case 'e':
 
-			retorno = MATRIZ_VOOS_showVoos(ponteiroMatriz);
+			retorno = opcaoE();
 			printarRetorno(retorno);
 
 			break;
@@ -183,14 +219,15 @@ int main(){
 			if((arquivo = fopen(swapString1, "r"))==NULL){
 				printf("Arquivo nao encontrado. Tente novamente mais tarde.\n");
 			} else {
-			fscanf(arquivo,"%c", &opcaoArquivo);
-			printf("%c\n", opcaoArquivo);
+				while(!feof(arquivo)){
+					fscanf(arquivo,"%c", &opcaoArquivo);
+					printf("%c\n", opcaoArquivo);
 
-			switch(opcaoArquivo){
-				default: 
-					break;
-			}	
-
+					switch(opcaoArquivo){
+						default: 
+							break;
+					}	
+				}
 
 
 
