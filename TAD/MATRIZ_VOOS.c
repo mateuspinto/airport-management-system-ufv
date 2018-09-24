@@ -89,14 +89,13 @@ int MATRIZ_VOOS_showVoosDecolagem(MATRIZ_VOOS *ponteiro, horario *decolagem){
 
 //Printa VOOs dado o endereco da matriz e o endereco de um horario de pouso deles
 int MATRIZ_VOOS_showVoosPouso(MATRIZ_VOOS *ponteiro, horario *pouso){
-    printf("----------------------------------------------------");
     for(int i=0; i<24; i++){
         if(ponteiro->item_matriz[i][pouso->hora].numVoos>0){
           ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[i][pouso->hora].item.primeiroPtr;
           do{
               swapListaDeVoos=swapListaDeVoos->proximo;
               VOO_showVoo(&(swapListaDeVoos->item));
-              printf("----------------------------------------------------");
+              printf("----------------------------------------------------\n");
           }while(swapListaDeVoos->proximo!=NULL);
         }
     }
