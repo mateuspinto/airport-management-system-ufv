@@ -224,7 +224,7 @@ int MATRIZ_VOOS_salvarMatriz(MATRIZ_VOOS *ponteiro, FILE *salvar){
                   horaPouso = (swapListaDeVoos->item).horarioPouso.hora;
                   minPouso = (swapListaDeVoos->item).horarioPouso.min;
                   pista = VOO_getIdentificadorPistaDecolagem(&(swapListaDeVoos->item));
-                  fprintf(salvar, "b %d:%d %d:%d %s %s %d\n", horaDeco, minDeco, horaPouso, minPouso, aeroDeco, aeroPouso, pista);
+                  fprintf(salvar, "b %02d:%02d %02d:%02d %s %s %d\n", horaDeco, minDeco, horaPouso, minPouso, aeroDeco, aeroPouso, pista);
                   } while(swapListaDeVoos->proximo!=NULL);
           }
       }
