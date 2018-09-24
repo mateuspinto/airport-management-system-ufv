@@ -9,7 +9,7 @@ WARN=-Wall
 
 CCFLAGS=$(WARN)
 
-SRC= main.c TAD_AUXILIAR/horario.c TAD/VOO.c TAD/LISTA_DE_VOOS.c TAD/ITEM_MATRIZ.c TAD/MATRIZ_VOOS.c TAD_AUXILIAR/lista_encadeada_random.c
+SRC= main.c TAD_AUXILIAR/horario.c TAD/VOO.c TAD/LISTA_DE_VOOS.c TAD/ITEM_MATRIZ.c TAD/MATRIZ_VOOS.c
 
 all:
 	$(CC) -o $(TARGET) $(SRC) $(CCFLAGS) -lm
