@@ -15,6 +15,7 @@ int ITEM_MATRIZ_inicializa(ITEM_MATRIZ *ponteiro);
 
 //Define os valores do TAD ITEM_MATRIZ
 int ITEM_MATRIZ_setItemMatriz(ITEM_MATRIZ *ponteiro, LISTA_DE_VOOS *item, horario *ultimaAtualizacao);
+int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setUltimaAtualizacao(ITEM_MATRIZ *ponteiro);
 int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setHorarioDecolagem(ITEM_MATRIZ *ponteiro, unsigned int vid, horario *horario);
 int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setHorarioPouso(ITEM_MATRIZ *ponteiro, unsigned int vid, horario *horario);
 int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setAeroportoDecolagem(ITEM_MATRIZ *ponteiro, unsigned int vid, char *aeroporto);

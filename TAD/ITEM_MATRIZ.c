@@ -4,6 +4,7 @@
 #include "../TAD_AUXILIAR/horario.h"
 #include "VOO.h"
 #include "ITEM_MATRIZ.h"
+#include <time.h>
 
 // Inicializa o TAD ITEM_MATRIZ
 int ITEM_MATRIZ_inicializa(ITEM_MATRIZ *ponteiro){
@@ -19,6 +20,17 @@ int ITEM_MATRIZ_setItemMatriz(ITEM_MATRIZ *ponteiro, LISTA_DE_VOOS *item, horari
     ponteiro->numVoos+=item->numItens;
     ponteiro->ultimaAtualizacao=*ultimaAtualizacao;
     
+    return 0;
+}
+
+int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setUltimaAtualizacao(ITEM_MATRIZ *ponteiro){
+    struct tm *horarioatual;
+    time_t momentoatual;
+    momentoatual= time(NULL);
+    horarioatual=localtime(&momentoatual);
+
+    ponteiro->ultimaAtualizacao.hora= horarioatual->tm_hour;
+    ponteiro->ultimaAtualizacao.min=horarioatual->tm_min;
     return 0;
 }
 

@@ -18,7 +18,7 @@ int LISTA_DE_VOOS_insereVoo(LISTA_DE_VOOS *lista, VOO *itemInserido){
   (*itemVoo).proximo=NULL;
   ITEM_LISTA_DE_VOOS *itemLista=lista->primeiroPtr;
 
-  while((*itemLista).proximo!=NULL && itemLista->proximo->item.horarioDecolagem.min<itemVoo->item.horarioDecolagem.min){
+  while((*itemLista).proximo!=NULL && (itemLista->proximo->item.horarioDecolagem.min<=itemVoo->item.horarioDecolagem.min)){
     itemLista=(*itemLista).proximo;
   }
   

@@ -6,17 +6,19 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "../TAD_AUXILIAR/horario.h"
+#include <time.h>
 
 //Inicializa a matriz de voos
 int MATRIZ_VOOS_inicializa(MATRIZ_VOOS *ponteiro){
     for(int i=0; i<24; i++){
         for(int j=0; j<24; j++){
             ITEM_MATRIZ_inicializa(&(ponteiro->item_matriz[i][j]));
+            ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setUltimaAtualizacao(&(ponteiro->item_matriz[i][j]));
         }
     }
     ponteiro->totalVoos=0;
     horario_inicializa(&(ponteiro->data));
-
+    MATRIZ_VOOS_setData(ponteiro);
     return 0;
 }
 
@@ -27,6 +29,20 @@ int MATRIZ_VOOS_setVoo(MATRIZ_VOOS *ponteiro, VOO *voo){
     ponteiro->item_matriz[voo->horarioDecolagem.hora][voo->horarioPouso.hora].numVoos+=1;
     ponteiro->totalVoos+=1;
     LISTA_DE_VOOS_insereVoo(&(ponteiro->item_matriz[voo->horarioDecolagem.hora][voo->horarioPouso.hora].item), voo);
+    ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setUltimaAtualizacao(&(ponteiro->item_matriz[voo->horarioDecolagem.hora][voo->horarioPouso.hora]));
+    MATRIZ_VOOS_setData(ponteiro);
+    return 0;
+}
+
+int MATRIZ_VOOS_setData(MATRIZ_VOOS *ponteiro){
+    struct tm *horarioatual;
+    time_t momentoatual;
+    momentoatual= time(NULL);
+    horarioatual=localtime(&momentoatual);
+
+    ponteiro->data.hora= horarioatual->tm_hour;
+    ponteiro->data.min=horarioatual->tm_min;
+    
     return 0;
 }
 
@@ -36,6 +52,9 @@ int MATRIZ_VOOS_delVoo(MATRIZ_VOOS *ponteiro, unsigned int *VID){
         for(int j=0; j<24; j++){
             if(LISTA_DE_VOOS_removeVoo(&(ponteiro->item_matriz[i][j].item), *VID)==0){
                 ponteiro->item_matriz[i][j].item.numItens-=1;
+                ponteiro->item_matriz[i][j].numVoos-=1;
+                ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setUltimaAtualizacao(&(ponteiro->item_matriz[i][j]));
+                MATRIZ_VOOS_setData(ponteiro);
                 i=24;
                 j=24;
                 return 0;
@@ -108,6 +127,7 @@ int MATRIZ_VOOS_showVoos(MATRIZ_VOOS *ponteiro){
     for(int i=0; i<24; i++){
         for(int j=0; j<24; j++){
             if(ponteiro->item_matriz[i][j].item.numItens>0){
+                printf("++++++++++++++++++++ %d:%d +++++++++++++++++++\n", ponteiro->item_matriz[i][j].ultimaAtualizacao.hora, ponteiro->item_matriz[i][j].ultimaAtualizacao.min);
                 ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[i][j].item.primeiroPtr;
                 do{
                     swapListaDeVoos=swapListaDeVoos->proximo;
@@ -164,7 +184,7 @@ int MATRIZ_VOOS_showHorarioMenosVoos(MATRIZ_VOOS *ponteiro){
 int MATRIZ_VOOS_showListaAlteracaoMaisRecente(MATRIZ_VOOS *ponteiro){
     int m=0;
     int n=0;
-    int maiorMinuto=0;
+    int maiorMinuto=(ponteiro->item_matriz[0][0].ultimaAtualizacao.hora*60+ponteiro->item_matriz[0][0].ultimaAtualizacao.min);
     for(int i=0; i<24; i++){
         for(int j=0; j<24; j++){
             int minutos=60*(ponteiro->item_matriz[i][j].ultimaAtualizacao.hora)+(ponteiro->item_matriz[i][j].ultimaAtualizacao.min);
