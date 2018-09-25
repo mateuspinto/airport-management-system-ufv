@@ -179,8 +179,12 @@ int opcaoL(){
 }
 
 //Diz se a matriz e esparca ou nao usando a MATRIZ_VOOS_verificarMatrizEsparca
-int opcaoM(){
-	return MATRIZ_VOOS_verificarMatrizEsparca(ponteiroMatriz);
+void opcaoM(){
+	MATRIZ_VOOS_verificarMatrizEsparca(ponteiroMatriz);
+}
+
+int salvarArquivo(FILE *salvar){
+	return MATRIZ_VOOS_salvarMatriz(ponteiroMatriz, salvar);
 }
 
 int main(){
@@ -198,8 +202,9 @@ int main(){
 	//Definindo retorno padrao de funcoes como erro
 	int retorno = 1;
 
-	//Criando um ponteiro para arquivo
+	//Criando um ponteiro para arquivo de leitura e gravacao
 	FILE * arquivo = NULL;
+	FILE * bancoDados = NULL;
 
 	//Inicializando a matriz automaticamente, caso o usuário se esqueça
 	MATRIZ_VOOS_inicializa(ponteiroMatriz);
@@ -233,7 +238,8 @@ int main(){
 	printf("k- Encontrar lista de voos mais recentemente alterada. \n");
 	printf("l- Encontrar lista de voos menos recentemente alterada.\n");
 	printf("m- Verificar se matriz e esparca.\n");
-	printf("9- MODO ARQUIVO\n");
+	printf("8- ### ARQUIVO ### - SALVAR TODO O BANCO DE DADOS.\n");
+	printf("9- ### ARQUIVO ### - ABRIR ARQUIVO.\n");
 	printf("0- Sair do programa.\n\n");
 
 
@@ -337,6 +343,16 @@ int main(){
 		case 'm':
 			opcaoM();
 
+			break;
+
+		case '8':
+			printf("Digite o nome do arquivo que voce deseja salvar com a extensao: ");
+			scanf("%s", swapString1);
+			bancoDados = fopen(swapString1, "w+");
+
+			retorno = salvarArquivo(bancoDados);
+			fclose(bancoDados);
+			printarRetorno(retorno);
 			break;
 
 		// O caso 9 é o MODO ARQUIVO, que lê algum arquivo e executa suas instruções
