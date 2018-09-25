@@ -8,9 +8,8 @@ int horario_inicializa(horario *ponteiro){
   return 0;
 }
 
-/* Define se os horarios estao em ordem crescente. Tem como entrada dois
-ponteiros para os TADS. Retorna 1 se forem, 0 se não. É uma versao simplfiicada
-da horario_compararHorarios */
+/* Define se os horários estão em ordem crescente. Tem como entrada dois
+ponteiros para os TADS. Retorna 1 se forem, 0 se não.*/
 int horario_ehFuturo(horario *ponteiro1, horario *ponteiro2){
 	int horario1, horario2;
 	horario1 = 60* ponteiro1-> hora + ponteiro1 -> min;

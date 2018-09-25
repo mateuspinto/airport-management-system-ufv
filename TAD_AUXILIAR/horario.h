@@ -1,4 +1,4 @@
-/* Define o TAD e os prototipos das funcoes caso eles ainda nao tenham sido
+/* Define o TAD e os protótipos das funções caso eles ainda nao tenham sido
 definidos */
 #ifndef HORARIO_H_INCLUDED
 #define HORARIO_H_INCLUDED
@@ -13,7 +13,7 @@ typedef struct {
   int min;
 } horario;
 
-// Prototipos das funções
+// Protótipos das funções
 int horario_inicializa(horario *ponteiro);
 int horario_ehFuturo(horario *ponteiro1, horario *ponteiro2);
 int horario_setHorario(horario *ponteiro, unsigned int hora, unsigned int min);

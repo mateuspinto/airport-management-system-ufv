@@ -27,7 +27,7 @@ int LISTA_DE_VOOS_insereVoo(LISTA_DE_VOOS *lista, VOO *itemInserido){
 
   return 0;
 }
-//Remove o voo com o mesmo vid do parâmetro de entrada em uma lista de voos
+//Remove o voo com o mesmo VID do parâmetro de entrada em uma lista de voos
 int LISTA_DE_VOOS_removeVoo(LISTA_DE_VOOS *lista, unsigned int VID){
   ITEM_LISTA_DE_VOOS *swapItemListaVoos=lista->primeiroPtr;
   ITEM_LISTA_DE_VOOS *swapItemListaVoosAnterior=NULL; 
@@ -45,7 +45,7 @@ int LISTA_DE_VOOS_removeVoo(LISTA_DE_VOOS *lista, unsigned int VID){
   return 1;
 }
 
-//"Retorna" o voo com o mesmo vid do parâmetro de entrada em uma lista de voos por meio do parâmetro **voo
+//"Retorna" o voo com o mesmo VID do parâmetro de entrada em uma lista de voos por meio do parâmetro **voo
 int LISTA_DE_VOOS_getVoo(LISTA_DE_VOOS *lista, unsigned int VID, VOO **voo){
   ITEM_LISTA_DE_VOOS *swapItemListaVoos=lista->primeiroPtr;
   while(swapItemListaVoos->proximo!=NULL && swapItemListaVoos->item.VID!=VID){
@@ -58,7 +58,7 @@ int LISTA_DE_VOOS_getVoo(LISTA_DE_VOOS *lista, unsigned int VID, VOO **voo){
 
   return 1;
 }
-//Mostra os parâmetros do voo com o mesmo vid do parâmetro de entrada em uma lista de voos
+//Mostra os parâmetros do voo com o mesmo VID do parâmetro de entrada em uma lista de voos
 void LISTA_DE_VOOS_showVoo(LISTA_DE_VOOS *lista, unsigned int VID){
   ITEM_LISTA_DE_VOOS *swapItemListaVoos=lista->primeiroPtr;
   while(swapItemListaVoos->proximo!=NULL && swapItemListaVoos->item.VID!=VID){

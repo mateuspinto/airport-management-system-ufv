@@ -39,7 +39,7 @@ void VOO_getAeroportoDecolagem(VOO *ponteiro, char *aeroporto);
 void VOO_getAeroportoPouso(VOO *ponteiro, char *aeroporto);
 int VOO_getIdentificadorPistaDecolagem(VOO *ponteiro);
 
-// Definindo prototipo das funcoes show, que printam informacoes
+// Definindo protótipo das funções show, que printam informações
 void VOO_showVID(VOO *ponteiro);
 void VOO_showHorarioDecolagem(VOO *ponteiro);
 void VOO_showHorarioPouso(VOO *ponteiro);

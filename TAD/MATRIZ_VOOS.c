@@ -140,7 +140,7 @@ int MATRIZ_VOOS_showVoos(MATRIZ_VOOS *ponteiro){
     return 0;
 }
 
-//Mostra os indices da matriz com o maior numero de VOOs
+//Mostra os índices da matriz com o maior número de VOOs
 int MATRIZ_VOOS_showHorarioMaisVoos(MATRIZ_VOOS *ponteiro){
     int m=0;
     int n=0;
@@ -160,7 +160,7 @@ int MATRIZ_VOOS_showHorarioMaisVoos(MATRIZ_VOOS *ponteiro){
     return 0;
 }
 
-//Mostra os indices da matriz com o menor numero de VOOs
+//Mostra os índices da matriz com o menor número de VOOs
 int MATRIZ_VOOS_showHorarioMenosVoos(MATRIZ_VOOS *ponteiro){
     int m=0;
     int n=0;
@@ -180,7 +180,7 @@ int MATRIZ_VOOS_showHorarioMenosVoos(MATRIZ_VOOS *ponteiro){
     return 0;
 }
 
-//Mostra os indices da matriz com a alteração mais recente
+//Mostra os índices da matriz com a alteração mais recente
 int MATRIZ_VOOS_showListaAlteracaoMaisRecente(MATRIZ_VOOS *ponteiro){
     int m=0;
     int n=0;

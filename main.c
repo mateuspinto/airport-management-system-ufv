@@ -1,4 +1,4 @@
-//Incluindo bibliotecas padroes necessárias
+//Incluindo bibliotecas padrões necessárias
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -17,7 +17,7 @@
 MATRIZ_VOOS matriz;
 MATRIZ_VOOS *ponteiroMatriz;
 
-//Função que imprime se o retorno das funcoes foi positivo ou negativo. Feita pra poupar retrabalho.
+//Função que imprime se o retorno das funções foi positivo ou negativo. Feita pra poupar retrabalho.
 void printarRetorno(int retorno){
 	if(retorno==0){
 		printf("########################################################################################################\n");
@@ -43,7 +43,7 @@ void printarRetornoVID(int retorno){
 	}
 }
 
-//Aqui foram criadas funções iguais para o MODO ARQUIVO e o interativo, para poupar re-trabalho. Nessas funcoes, sao usadas
+//Aqui foram criadas funções iguais para o MODO ARQUIVO e o interativo, para poupar retrabalho. Nessas funções, são usadas
 //as variáveis globais.
 
 //Incializa a matriz usando a função MATRIZ_VOOS_inicializa
@@ -60,21 +60,21 @@ int opcaoB(unsigned int *horaDeco, unsigned int *minDeco, unsigned int *horaPous
 	VOO * swapVoo=NULL;
 	horario *swapHorario1=NULL, *swapHorario2=NULL;
 
-	// Reservando memoria para guardar horario de decolagem e usando funcoes do TAD horario pra definir hora e minuto
+	// Reservando memória para guardar horário de decolagem e usando funções do TAD horario pra definir hora e minuto
 	swapHorario1 = malloc(sizeof(horario));
 	horario_inicializa(swapHorario1);
 	horario_setHorario(swapHorario1, *horaDeco, *minDeco);
 
-	// Reservando memoria para guardar horario de pouso e usando funcoes do TAD horario pra definir hora e minuto
+	// Reservando memória para guardar horário de pouso e usando funções do TAD horario pra definir hora e minuto
 	swapHorario2 = malloc(sizeof(horario));
 	horario_inicializa(swapHorario2);
 	horario_setHorario(swapHorario2, *horaPouso, *minPouso);
 
-	// Reservando memoria para guardar VOO para alocar.
+	// Reservando memória para guardar VOO para alocar.
 	swapVoo = malloc(sizeof(VOO));
 	VOO_inicializa(swapVoo);
 
-	// Definindo parametros do VOO com as funcoes feitas para tal
+	// Definindo parâmetros do VOO com as funções feitas para tal
 	VOO_setHorarioDecolagem(swapVoo, swapHorario1);
 	VOO_setHorarioPouso(swapVoo, swapHorario2);
 	VOO_setAeroportoDecolagem(swapVoo, aeroDeco);
@@ -84,7 +84,7 @@ int opcaoB(unsigned int *horaDeco, unsigned int *minDeco, unsigned int *horaPous
 	// Guardando retorno
 	retorno = MATRIZ_VOOS_setVoo(ponteiroMatriz,swapVoo);
 
-	// Liberando memoria usada nos mallocs
+	// Liberando memória usada nos mallocs
 	free(swapVoo);
 	free(swapHorario1);
 	free(swapHorario2);
@@ -106,12 +106,12 @@ int opcaoE(unsigned int *horaDeco, unsigned int *minDeco, unsigned int *horaPous
 	int retorno;
 	horario *swapHorario1, *swapHorario2;
 
-	// Reservando memoria para guardar horario de decolagem e usando funcoes do TAD horario pra definir hora e minuto
+	// Reservando memória para guardar horário de decolagem e usando funções do TAD horario pra definir hora e minuto
 	swapHorario1 = malloc(sizeof(horario));
 	horario_inicializa(swapHorario1);
 	horario_setHorario(swapHorario1, *horaDeco, *minDeco);
 
-	// Reservando memoria para guardar horario de pouso e usando funcoes do TAD horario pra definir hora e minuto
+	// Reservando memória para guardar horário de pouso e usando funções do TAD horario pra definir hora e minuto
 	swapHorario2 = malloc(sizeof(horario));
 	horario_inicializa(swapHorario2);
 	horario_setHorario(swapHorario2, *horaPouso, *minPouso);
@@ -129,7 +129,7 @@ int opcaoF(unsigned int *horaDeco, unsigned int *minDeco){
 	int retorno;
 	horario *swapHorario1;
 
-	// Reservando memoria para guardar horario de decolagem e usando funcoes do TAD horario pra definir hora e minuto
+	// Reservando memória para guardar horário de decolagem e usando funções do TAD horario pra definir hora e minuto
 	swapHorario1 = malloc(sizeof(horario));
 	horario_inicializa(swapHorario1);
 	horario_setHorario(swapHorario1, *horaDeco, *minDeco);
@@ -145,7 +145,7 @@ int opcaoG(unsigned int *horaDeco, unsigned int *minDeco){
 	int retorno;
 	horario *swapHorario1;
 
-	// Reservando memoria para guardar horario de decolagem e usando funcoes do TAD horario pra definir hora e minuto
+	// Reservando memória para guardar horário de decolagem e usando funções do TAD horario pra definir hora e minuto
 	swapHorario1 = malloc(sizeof(horario));
 	horario_inicializa(swapHorario1);
 	horario_setHorario(swapHorario1, *horaDeco, *minDeco);
@@ -178,7 +178,7 @@ int opcaoL(){
 	return MATRIZ_VOOS_showListaAlteracaoMenosRecente(ponteiroMatriz);
 }
 
-//Diz se a matriz e esparca ou nao usando a MATRIZ_VOOS_verificarMatrizEsparca
+//Diz se a matriz e esparça ou nao usando a MATRIZ_VOOS_verificarMatrizEsparca
 void opcaoM(){
 	MATRIZ_VOOS_verificarMatrizEsparca(ponteiroMatriz);
 }
@@ -192,17 +192,17 @@ int main(){
 	//Colocando endereço da matriz global no ponteiro global
 	ponteiroMatriz = &matriz;
 
-	//Criando algumas areas de memoria de troca para o resto do programa
+	//Criando algumas áreas de memória de troca para o resto do programa
 	char swapString1[30], swapString2[30], opcaoArquivo;
 	unsigned int swapUnsInt1, swapUnsInt2, swapUnsInt3, swapUnsInt4, swapUnsInt5;
 
-	//Definindo input padrao, caso a pessoa nao digite nada e criando a variavel em si
+	//Definindo input padrão, caso a pessoa não digite nada e criando a variável em si
 	char input = ' ';
 
-	//Definindo retorno padrao de funcoes como erro
+	//Definindo retorno padrão de funções como erro
 	int retorno = 1;
 
-	//Criando um ponteiro para arquivo de leitura e gravacao
+	//Criando um ponteiro para arquivo de leitura e gravação
 	FILE * arquivo = NULL;
 	FILE * bancoDados = NULL;
 
@@ -376,7 +376,7 @@ int main(){
 					//Pegando o primeiro caractere de cada linha do arquivo e armazenando numa varíavel de area de troca
 					fscanf(arquivo,"%c", &opcaoArquivo);
 
-					//Um switch escolhe a funcao certa, e a cada caso, as informacoes da linha sao armazenadas em areas de troca e a funcao
+					//Um switch escolhe a função certa, e a cada caso, as informações da linha são armazenadas em áreas de troca e a função
 					//correspondente é chamada
 					switch(opcaoArquivo){
 
@@ -475,7 +475,7 @@ int main(){
 
 
 
-			//Fecha o arquivo garantindo assim que ele nao será corrompido e etc
+			//Fecha o arquivo garantindo assim que ele não será corrompido e etc
 			fclose(arquivo);
 			}
 
@@ -484,18 +484,18 @@ int main(){
 		case '?':
 			printf("########################################################################################################\n");
 			printf("# xAero e um software de gerenciamento de aeroportos desenvolvido para o trabalho pratico da materia de#\n");
-			printf("# Algoritimos de Ordenacao E Estruturas de Dados I, ministrada pela professora Doutora Thais.          #\n");
+			printf("# Algoritmos E Estruturas de Dados I, ministrada pela professora Doutora Thais R. M. Braga Silva.      #\n");
 			printf("########################################################################################################\n");
-			printf("#                                            Integrantes do grupo                                      #\n");
-			printf("#                         Mateus Pinto da Silva -- https://github.com/mateusps10                       #\n");
-			printf("#                   Leandro Lazaro Araujo Vieira -- https://github.com/leandrolazaro                   #\n");
-			printf("#                          Vinicius Hanner -- https://github.com/VinicioHaner                          #\n");
+			printf("#                                        Integrantes do grupo:                                         #\n");
+			printf("#                        Mateus Pinto da Silva -- https://github.com/mateusps10                        #\n");
+			printf("#                    Leandro Lazaro Araujo Vieira -- https://github.com/leandrolazaro                  #\n");
+			printf("#                   Vinicius Julio Martins Barbosa -- https://github.com/VinicioHaner                  #\n");
 			printf("########################################################################################################\n");
 
 
 			break;
 
-		//O caso 0 engloba o que acontece quando o usário pede pra sair do programa
+		//O caso 0 engloba o que acontece quando o usuário pede pra sair do programa
 		case '0':
 			printf("########################################################################################################\n");
 			printf("#                        Muito obrigado por usar o xAero Airport System s2                             #\n");

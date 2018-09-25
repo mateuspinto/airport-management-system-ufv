@@ -34,7 +34,7 @@ int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setUltimaAtualizacao(ITEM_MATRIZ *ponteiro){
     return 0;
 }
 
-// Definindo o horário de decolagem do Voo
+// Definindo o horário de decolagem do voo
 int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setHorarioDecolagem(ITEM_MATRIZ *ponteiro, unsigned int vid, horario *horario){
     ITEM_LISTA_DE_VOOS *swapItemMatriz=ponteiro->item.primeiroPtr;
     while(swapItemMatriz->proximo!=NULL && swapItemMatriz->item.VID!=vid){
@@ -76,7 +76,7 @@ int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setAeroportoDecolagem(ITEM_MATRIZ *ponteiro, u
 	return 1;
 }
 
-//Define o aerporpoto de pouso do voo
+//Define o aeroporto de pouso do voo
 int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_setAeroportoPouso(ITEM_MATRIZ *ponteiro, unsigned int vid, char *aeroporto){
 	ITEM_LISTA_DE_VOOS *swapItemMatriz=ponteiro->item.primeiroPtr;
     while(swapItemMatriz->proximo!=NULL && swapItemMatriz->item.VID!=vid){
@@ -150,7 +150,7 @@ void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showHorarioDecolagem(ITEM_MATRIZ *ponteiro, u
     }
 }
 
-//Mostra o horario de pouso do voo
+//Mostra o horário de pouso do voo
 void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showHorarioPouso(ITEM_MATRIZ *ponteiro, unsigned int vid){
     ITEM_LISTA_DE_VOOS *swapItemListaVoos=ponteiro->item.primeiroPtr;
     while(swapItemListaVoos->proximo!=NULL && swapItemListaVoos->item.VID!=vid){
