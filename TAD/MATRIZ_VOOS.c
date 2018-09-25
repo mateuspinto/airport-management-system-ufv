@@ -42,7 +42,7 @@ int MATRIZ_VOOS_setData(MATRIZ_VOOS *ponteiro){
 
     ponteiro->data.hora= horarioatual->tm_hour;
     ponteiro->data.min=horarioatual->tm_min;
-    
+
     return 0;
 }
 
@@ -195,10 +195,36 @@ int MATRIZ_VOOS_showListaAlteracaoMaisRecente(MATRIZ_VOOS *ponteiro){
             }
         }
     }
-    printf("Linha: %d\n:", m);
-    printf("Coluna: %d\n:", n);
+    printf("########################################################################################################\n");
+    printf("                                    Alteracao mais recente em:\n");
+    printf("Linha: %d\n", m);
+    printf("Coluna: %d\n", n);
+    printf("########################################################################################################\n");
     return 0;
 }
+
+int MATRIZ_VOOS_showListaAlteracaoMenosRecente(MATRIZ_VOOS *ponteiro){
+    int m=0;
+    int n=0;
+    int menorMinuto=(ponteiro->item_matriz[0][0].ultimaAtualizacao.hora*60+ponteiro->item_matriz[0][0].ultimaAtualizacao.min);
+    for(int i=0; i<24; i++){
+        for(int j=0; j<24; j++){
+            int minutos=60*(ponteiro->item_matriz[i][j].ultimaAtualizacao.hora)+(ponteiro->item_matriz[i][j].ultimaAtualizacao.min);
+            if(minutos<menorMinuto){
+                menorMinuto=minutos;
+                m=i;
+                n=j;
+            }
+        }
+    }
+    printf("########################################################################################################\n");
+    printf("                                    Alteracao menos recente em:\n");
+    printf("Linha: %d\n", m);
+    printf("Coluna: %d\n", n);
+    printf("########################################################################################################\n");
+    return 0;
+}
+
 
 //Mostra se a matriz é esparça
 int MATRIZ_VOOS_verificarMatrizEsparca(MATRIZ_VOOS *ponteiro){
@@ -216,12 +242,12 @@ int MATRIZ_VOOS_verificarMatrizEsparca(MATRIZ_VOOS *ponteiro){
     if(celulasVazia>=(celulasPreenchidas*2)){
         printf("");
         printf("########################################################################################################\n");
-		printf("#                                          A Matriz e esparca!                                         #\n");
-		printf("########################################################################################################\n");
+		    printf("#                                          A Matriz e esparca!                                         #\n");
+		    printf("########################################################################################################\n");
     }else{
         printf("########################################################################################################\n");
-		printf("#                                        A Matriz nao e esparca!                                       #\n");
-		printf("########################################################################################################\n");
+		    printf("#                                        A Matriz nao e esparca!                                       #\n");
+		    printf("########################################################################################################\n");
     }
 
     return 0;

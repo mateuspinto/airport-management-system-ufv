@@ -171,11 +171,11 @@ int opcaoJ(){
 }
 
 int opcaoK(){
-	return 0;
+	return MATRIZ_VOOS_showListaAlteracaoMaisRecente(ponteiroMatriz);
 }
 
 int opcaoL(){
-	return 0;
+	return MATRIZ_VOOS_showListaAlteracaoMenosRecente(ponteiroMatriz);
 }
 
 //Diz se a matriz e esparca ou nao usando a MATRIZ_VOOS_verificarMatrizEsparca
@@ -240,6 +240,7 @@ int main(){
 	printf("m- Verificar se matriz e esparca.\n");
 	printf("8- ### ARQUIVO ### - SALVAR TODO O BANCO DE DADOS.\n");
 	printf("9- ### ARQUIVO ### - ABRIR ARQUIVO.\n");
+	printf("?- Sobre\n");
 	printf("0- Sair do programa.\n\n");
 
 
@@ -333,11 +334,11 @@ int main(){
 			break;
 
 		case 'k':
-
+			opcaoK();
 			break;
 
 		case 'l':
-
+			opcaoL();
 			break;
 
 		case 'm':
@@ -448,14 +449,12 @@ int main(){
 							break;
 
 						case 'k':
-							retorno = opcaoK();
-							printarRetorno(retorno);
+							opcaoK();
 
 							break;
 
 						case 'l':
-							retorno = opcaoL();
-							printarRetorno(retorno);
+							opcaoL();
 
 							break;
 
@@ -479,6 +478,20 @@ int main(){
 			//Fecha o arquivo garantindo assim que ele nao será corrompido e etc
 			fclose(arquivo);
 			}
+
+			break;
+
+		case '?':
+			printf("########################################################################################################\n");
+			printf("# xAero e um software de gerenciamento de aeroportos desenvolvido para o trabalho pratico da materia de#\n");
+			printf("# Algoritimos de Ordenacao E Estruturas de Dados I, ministrada pela professora Doutora Thais.          #\n");
+			printf("########################################################################################################\n");
+			printf("#                                            Integrantes do grupo                                      #\n");
+			printf("#                         Mateus Pinto da Silva -- https://github.com/mateusps10                       #\n");
+			printf("#                   Leandro Lazaro Araujo Vieira -- https://github.com/leandrolazaro                   #\n");
+			printf("#                          Vinicius Hanner -- https://github.com/VinicioHaner                          #\n");
+			printf("########################################################################################################\n");
+
 
 			break;
 
