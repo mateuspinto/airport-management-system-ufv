@@ -252,15 +252,23 @@ int MATRIZ_VOOS_verificarMatrizEsparca(MATRIZ_VOOS *ponteiro){
 
     return 0;
 }
+
+// Salva a matriz VOOs como um novo arquivo de entrada para uso posterior
 int MATRIZ_VOOS_salvarMatriz(MATRIZ_VOOS *ponteiro, FILE *salvar){
   unsigned int vid, horaDeco, minDeco, horaPouso, minPouso, pista;
   char aeroDeco[30], aeroPouso[30];
+
+  //Adiciona uma linha no arquivo apenas com a letra A, responsável por iniciar a matriz no novo arquivo de entrada
   fprintf(salvar, "a\n");
+
+
   for(int i=0; i<24; i++){
       for(int j=0; j<24; j++){
           if(ponteiro->item_matriz[i][j].item.numItens>0){
               ITEM_LISTA_DE_VOOS *swapListaDeVoos=ponteiro->item_matriz[i][j].item.primeiroPtr;
               do{
+
+              	  //Salva cada informação de VOO em varíaveis a serem printadas no arquivo
                   swapListaDeVoos=swapListaDeVoos->proximo;
                   vid = VOO_getVID(&(swapListaDeVoos->item));
                   VOO_getAeroportoDecolagem(&(swapListaDeVoos->item), aeroDeco);
@@ -270,6 +278,8 @@ int MATRIZ_VOOS_salvarMatriz(MATRIZ_VOOS *ponteiro, FILE *salvar){
                   horaPouso = (swapListaDeVoos->item).horarioPouso.hora;
                   minPouso = (swapListaDeVoos->item).horarioPouso.min;
                   pista = VOO_getIdentificadorPistaDecolagem(&(swapListaDeVoos->item));
+
+                  //Printa no arquivo as informacoes
                   fprintf(salvar, "b %02d:%02d %02d:%02d %s %s %d\n", horaDeco, minDeco, horaPouso, minPouso, aeroDeco, aeroPouso, pista);
                   } while(swapListaDeVoos->proximo!=NULL);
           }

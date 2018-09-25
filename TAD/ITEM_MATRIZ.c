@@ -111,33 +111,6 @@ unsigned int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_getVID(ITEM_MATRIZ *ponteiro){
 	return 0;
 }
 
-void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_getHorarioDecolagem(ITEM_MATRIZ *ponteiro, unsigned int vid, horario *horario){
-
-}
-
-void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_getHorarioPouso(ITEM_MATRIZ *ponteiro, unsigned int vid, horario *horario){
-	
-}
-
-
-void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_getAeroportoDecolagem(ITEM_MATRIZ *ponteiro, unsigned int vid, char *aeroporto){
-	
-}
-
-
-void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_getAeroportoPouso(ITEM_MATRIZ *ponteiro, unsigned int vid, char *aeroporto){
-	
-}
-
-
-int ITEM_MATRIZ_LISTA_DE_VOOS_VOO_getIdentificadorPistaDecolagem(ITEM_MATRIZ *ponteiro, unsigned int vid){
-	return 0;
-}
-
-// void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showVID(ITEM_MATRIZ *ponteiro){
-
-// }
-
 //Mostra o horário de decolagem do voo
 void ITEM_MATRIZ_LISTA_DE_VOOS_VOO_showHorarioDecolagem(ITEM_MATRIZ *ponteiro, unsigned int vid){
     ITEM_LISTA_DE_VOOS *swapItemListaVoos=ponteiro->item.primeiroPtr;

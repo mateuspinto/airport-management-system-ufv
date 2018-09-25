@@ -1,0 +1,6 @@
+########################################################################################################
+#                                        Integrantes do grupo:                                         #
+#                        Mateus Pinto da Silva -- 3489 -- https://github.com/mateusps10                #
+#                    Leandro Lazaro Araujo Vieira -- 3513 -- https://github.com/leandrolazaro          #
+#                   Vinicius Julio Martins Barbosa -- 3495 -- https://github.com/VinicioHaner          #
+########################################################################################################
