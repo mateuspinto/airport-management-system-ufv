@@ -1,8 +1,9 @@
 # change application name here (executable output name)
-TARGET=xaero
+TARGET=xaero.o
 
 # compiler
 CC=gcc
+CCO=clang
 # warnings
 WARN=-Wall
 
@@ -17,5 +18,8 @@ all:
 run:
 	./$(TARGET)
 
-clean:
+clear:
 	rm $(TARGET)
+
+clang:
+	$(CCO) -o $(TARGET) $(SRC) $(CCFLAGS) -lm -O3

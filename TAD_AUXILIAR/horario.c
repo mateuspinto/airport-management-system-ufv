@@ -1,5 +1,6 @@
 // Incluindo bibliotecas necessárias e/ou TADs auxiliares.
 #include "horario.h"
+#include <stdio.h>
 
 int horario_inicializa(horario *ponteiro){
 	ponteiro -> hora = 0;

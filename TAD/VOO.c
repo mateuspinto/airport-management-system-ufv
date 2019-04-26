@@ -142,6 +142,7 @@ void VOO_showAeroportoPouso(VOO *ponteiro){
 // Printa o identificador de pista de decolagem de um VOO dado endereço dele
 int VOO_showIdentificadorPistaDecolagem(VOO *ponteiro){
     printf("Identificador da Pista de Decolagem: %d\n", ponteiro->identificadorPistaDecolagem);
+    return 1;
 }
 
 // Printa todas as informações de um VOO dado endereço dele usando as funções passadas
@@ -152,4 +153,5 @@ int VOO_showVoo(VOO *ponteiro){
     VOO_showIdentificadorPistaDecolagem(ponteiro);
     VOO_showHorarioDecolagem(ponteiro);
     VOO_showHorarioPouso(ponteiro);
+    return 1;
 }
